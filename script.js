@@ -299,50 +299,104 @@ document.addEventListener("keydown", (event) => {
     if (event.key === "Escape" && modal.classList.contains("is-open")) closeQuote();
   });
 
-  form.addEventListener("submit", event => {
-    event.preventDefault();
-    if (!form.reportValidity()) return;
+//   form.addEventListener("submit", event => {
+//     event.preventDefault();
+//     if (!form.reportValidity()) return;
 
-    const d = new FormData(form);
-    const es = isSpanish();
+//     const d = new FormData(form);
+//     const es = isSpanish();
 
-    const subject = es
-      ? "Solicitud de cotización - R&CH Transport"
-      : "Quote Request - R&CH Transport";
+//     const subject = es
+//       ? "Solicitud de cotización - R&CH Transport"
+//       : "Quote Request - R&CH Transport";
 
-    const body = es
-      ? `Hola R&CH Transport,
+//     const body = es
+//       ? `Hola R&CH Transport,
 
-Me gustaría solicitar una cotización.
+// Me gustaría solicitar una cotización.
 
-Nombre: ${d.get("name") || ""}
-Correo electrónico: ${d.get("email") || ""}
-Teléfono: ${d.get("phone") || ""}
-Compañía: ${d.get("company") || ""}
-Lugar de recolección: ${d.get("pickup") || ""}
-Lugar de entrega: ${d.get("delivery") || ""}
+// Nombre: ${d.get("name") || ""}
+// Correo electrónico: ${d.get("email") || ""}
+// Teléfono: ${d.get("phone") || ""}
+// Compañía: ${d.get("company") || ""}
+// Lugar de recolección: ${d.get("pickup") || ""}
+// Lugar de entrega: ${d.get("delivery") || ""}
 
-Información del embarque / cotización:
-${d.get("details") || ""}
+// Información del embarque / cotización:
+// ${d.get("details") || ""}
 
-Gracias.`
-      : `Hello R&CH Transport,
+// Gracias.`
+//       : `Hello R&CH Transport,
 
-I would like to request a quote.
+// I would like to request a quote.
 
-Name: ${d.get("name") || ""}
-Email: ${d.get("email") || ""}
-Phone: ${d.get("phone") || ""}
-Company: ${d.get("company") || ""}
-Pickup location: ${d.get("pickup") || ""}
-Delivery location: ${d.get("delivery") || ""}
+// Name: ${d.get("name") || ""}
+// Email: ${d.get("email") || ""}
+// Phone: ${d.get("phone") || ""}
+// Company: ${d.get("company") || ""}
+// Pickup location: ${d.get("pickup") || ""}
+// Delivery location: ${d.get("delivery") || ""}
 
-Shipment / quote details:
-${d.get("details") || ""}
+// Shipment / quote details:
+// ${d.get("details") || ""}
 
-Thank you.`;
+// Thank you.`;
 
-    window.location.href =
-      `mailto:${quoteEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  });
-})();
+//     window.location.href =
+//       `mailto:${"info@rchtransport.com"}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+//   });
+// })();
+
+const form = document.getElementById("email-quote-modal-form");
+const submitButton = form.querySelector('button[type="submit"]');
+
+form.addEventListener("submit", async (event) => {
+  event.preventDefault();
+
+  if (!form.reportValidity()) {
+    return;
+  }
+
+  const originalText = submitButton.textContent;
+
+  submitButton.disabled = true;
+  submitButton.textContent = "SENDING...";
+
+  try {
+    const response = await fetch(form.action, {
+      method: "POST",
+      body: new FormData(form),
+      headers: {
+        Accept: "application/json",
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error("Form submission failed");
+    }
+
+    form.reset();
+
+    alert("Thank you! Your quote request has been sent.");
+
+    // Close your quote modal if you're using one
+    const modal = document.getElementById("email-quote-modal");
+
+    if (modal) {
+      modal.classList.remove("is-open");
+      modal.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("email-quote-open");
+    }
+
+  } catch (error) {
+    console.error(error);
+
+    alert(
+      "We couldn't send your request. Please try again or contact R&CH directly."
+    );
+  } finally {
+    submitButton.disabled = false;
+    submitButton.textContent = originalText;
+  }
+});
+
