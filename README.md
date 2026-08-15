@@ -1,240 +1,152 @@
-# R&CH Transport Bilingual Website
+# R&CH Transport Website
 
-This package recreates the approved R&CH Transport website direction in working HTML/CSS/JavaScript.
+A bilingual marketing website for R&CH Transport, LLC, built with plain HTML, CSS, and JavaScript.
 
-## Included
+The site presents the company’s freight services, bilingual messaging, and a quote request flow built around a modal form that submits directly to Formspree.
 
-- Responsive homepage
-- English / Spanish language toggle
-- Language preference saved in the browser
-- R&CH heritage logo concept
-- Hero image based on the approved design
-- Fleet cards and vehicle imagery
-- Hot shot / nationwide / local / team-driver business information
-- Contact section
-- Cloudflare Turnstile protected WhatsApp quote button
-- Cloudflare Pages Function for server-side verification
-- Mobile navigation
+## Features
 
-## Files
+- Responsive homepage for desktop, tablet, and mobile
+- English and Spanish language toggle
+- Bilingual messaging for transport and logistics services
+- Quote CTA buttons that open a modal request form
+- Direct Formspree submission for quote requests
+- Static-site implementation with no build step required
+
+## Tech Stack
+
+- HTML5
+- CSS3
+- Vanilla JavaScript
+- Formspree
+
+## Project Structure
 
 ```text
-index.html
-styles.css
-script.js
-assets/
-  rch-logo.svg
-  hero-van.jpg
-  unit-01.jpg
-  unit-02.jpg
-  unit-03.jpg
-  approved-design-reference.png
-functions/
-  api/
-    whatsapp.js
-TURNSTILE_SETUP.md
-IMAGE_GUIDE.md
-.dev.vars.example
+R-and-CH/
+├── index.html
+├── styles.css
+├── script.js
+├── services.html
+├── README.md
+├── BRAND_SYSTEM.md
+├── CUSTOMIZE.md
+├── DAD_SERVICES_ADDED.md
+├── IMAGE_GUIDE.md
+├── LOGO_GUIDE.md
+├── PHOTO_REPLACEMENT.md
+├── SERVICES_SECTION.md
+├── TURNSTILE_SETUP.md
+├── CNAME
+├── LICENSE
+├── assets/
+│   ├── rch-logo.svg
+│   ├── hero-van.jpg
+│   ├── service_01.png
+│   ├── service_02.png
+│   ├── service_03.png
+│   ├── service_04.png
+│   └── ...
+└── .gitignore
 ```
 
-## Preview locally
+## Local Development
 
-For the visual site:
+From the project folder, run:
 
 ```bash
+cd /Users/ilianacantu/Dev/R-and-CH
 python3 -m http.server 8000
 ```
 
-Visit:
+Then open:
 
 ```text
 http://localhost:8000
 ```
 
-The Turnstile/WhatsApp backend will not work through the basic Python server because it requires a serverless runtime.
+This is recommended because the quote form uses browser `fetch()` requests and should be tested from a local web server instead of by opening the file directly.
 
-## Language switching
+## Quote Flow
 
-The entire page is one HTML file.
+The current quote experience works like this:
 
-The `EN / ES` toggle changes text through the translation dictionary in `script.js`.
+1. User clicks a quote CTA from the top of the page or hero section.
+2. A modal opens.
+3. The user fills out the request form.
+4. The form submits to Formspree.
+5. The browser displays a success message or error alert.
 
-The selected language is stored in:
+Required fields include:
 
-```text
-localStorage["rch-language"]
+- name
+- phone
+- email
+- shipment / quote details
+
+The modal logic and submission handling live in `script.js`.
+
+## Bilingual Support
+
+The site includes an English / Spanish toggle.
+
+Language strings are defined in the `translations` object in `script.js` and applied through the DOM. The selected language is stored in browser localStorage with:
+
+```js
+localStorage.setItem("rch-language", lang)
 ```
 
-The WhatsApp starter message is also localized.
+## Formspree Setup
 
-## Before launch
+The active form points to:
 
-1. Confirm the WhatsApp number.
-2. Create a real Cloudflare Turnstile widget.
-3. Replace the Turnstile development sitekey in `index.html`.
-4. Configure the production secrets described in `TURNSTILE_SETUP.md`.
-5. Replace any temporary/generated vehicle photography with high-resolution originals when available.
-6. Confirm all vehicle dimensions and capacities before publishing.
+```html
+action="https://formspree.io/f/xkjwzdyo"
+```
 
+Before publishing, verify:
 
-## v2 visual update
+- the Formspree form ID is valid
+- the email endpoint is active
+- the receiving email address is correct
+- submissions are tested from a served site, not a bare file URL
 
-This version uses the selected heritage logo:
-- serif `R&CH`
-- navy highway bar
-- high-visibility lime lane markings
-- right-facing highway arrow
-- letterspaced `TRANSPORT, LLC`
+## Styling and Assets
 
-The hero crop and header proportions were also updated to match the cleaner approved website concept.
+The main styling is located in:
 
+- `styles.css`
 
-## v3 responsive update
+Branding and imagery are stored in:
 
-The site now adapts across:
-- large desktop monitors
-- laptops
-- tablets
-- large phones
-- small phones
+- `assets/`
 
-Responsive updates include:
-- fluid header spacing and typography
-- collapsible mobile navigation
-- responsive EN / ES controls
-- hero layout that stacks cleanly on tablet/mobile
-- corrected image scaling and cropping
-- 4 → 2 → 1 column service/benefit layouts
-- 3 → 2 → 1 column fleet layouts
-- mobile-friendly buttons and contact cards
-- prevention of horizontal overflow from angled design elements
+The layout includes responsive behavior for different screen sizes and custom styled quote buttons and service blocks.
 
+## Deployment Notes
 
-## v4 mobile-first update
+Before going live:
 
-The phone experience is now intentionally designed rather than simply collapsed from desktop.
+- test both English and Spanish flows
+- verify that quote submissions are received correctly
+- check contact details and wording for accuracy
+- confirm imagery is approved and high quality
+- validate the site on mobile and desktop breakpoints
 
-Mobile improvements include:
-- sticky header
-- animated hamburger menu
-- full-width mobile navigation
-- larger touch targets
-- phone-friendly EN / ES controls
-- stacked hero with a less aggressive image crop
-- full-width quote and services buttons
-- compact benefit rows
-- mobile product-style fleet cards
-- improved mobile typography and spacing
-- touch-friendly contact card
-- responsive Turnstile modal
-- layouts for 430px, 350px, and other small phone widths
+## Useful Reference Files
 
+- `index.html` — main page structure and modal form markup
+- `script.js` — language switch logic, modal behavior, and form submission logic
+- `styles.css` — site styling and responsive design
 
-## v5 mobile menu cleanup
+## Screenshots
 
-This version fixes the oversized mobile menu shown in testing.
+Add screenshots here when the site is ready for portfolio or client review.
 
-Changes:
-- compact dropdown instead of a near full-screen takeover
-- left-aligned mobile navigation
-- tighter vertical spacing
-- smaller EN / ES controls
-- smaller mobile quote button
-- subtle background dimming while the menu is open
-- reduced overlap with the hero section
+## License
 
+This project is licensed under the project’s included license file.
 
-## v6 modern mobile header
+## Notes
 
-The mobile header was redesigned to follow a more contemporary navigation pattern:
-
-- compact sticky white header
-- smaller logo
-- rounded hamburger button
-- floating menu card anchored to the upper-right
-- compact navigation rows instead of a full-screen navy block
-- EN / ES controls integrated into the dropdown
-- outlined WhatsApp quote CTA
-- subtle background dimming
-- click-outside and Escape-to-close behavior
-
-
-## v7 stable desktop hero
-
-The desktop hero image now preserves the full approved van composition when:
-- resizing the browser
-- zooming in or out
-- using different laptop/desktop aspect ratios
-
-Desktop uses `object-fit: contain` rather than `cover`, so the van is not arbitrarily cropped or pushed off-center.
-
-The separate mobile hero behavior is preserved because phones benefit from a tighter crop.
-
-## v9 updates
-
-- Desktop header is more resilient at 110%+ browser zoom.
-- Navigation spacing and typography scale before clipping.
-- Spanish hero headline is smaller and now emphasizes years of national/international transport experience and urgent freight.
-- Quote form now opens a pre-filled email instead of WhatsApp.
-- Contact/quote card sizing was cleaned up.
-- Mobile header behavior remains intact.
-
-## v11 visual hierarchy
-- Increased the desktop R&CH logo size in the upper-left.
-- Reduced the hero headline size for a cleaner balance.
-- Kept zoom-safe header behavior.
-- Preserved the compact mobile header.
-
-## v15 responsive overhaul
-- Fluid header sizing and zoom-safe navigation
-- Responsive logo scaling without growing its white container
-- Hero adapts across desktop, laptop, tablet and mobile
-- Benefits, services and fleet use 4/3/2/1-column responsive layouts
-- Contact/about/commitment sections stack cleanly
-- Mobile nav remains compact and modern
-- Improved browser zoom behavior and horizontal-overflow protection
-
-## v16 header cleanup
-- Removed the accumulated overlapping header triangles.
-- Rebuilt the desktop white logo panel with one clean clipped shape.
-- Reduced the actual desktop logo by about 10%.
-- Preserved responsive navigation and mobile header behavior.
-
-## v23 logo/header layering fix
-- Restored the full large logo.
-- Logo is no longer clipped by the diagonal header shape.
-- White diagonal is now a separate background layer.
-- Removed the rectangular white overlap.
-
-## v26 corrected services section
-- Hero/header preserved from v23.
-- Original commitments section preserved.
-- Fleet and About sections removed.
-- Service image crops corrected to eliminate black areas.
-- Service rows shortened and better balanced.
-- Emoji icons replaced with clean line SVG icons.
-- Service images remain relevant to each offering.
-- Responsive desktop/tablet/mobile behavior added only to services section.
-
-## v27 service image balance
-- Reduced service image zoom.
-- Centered trucks more consistently.
-- Added breathing room around service imagery.
-- Slightly reduced the diagonal overlap into images.
-- Preserved all other sections and responsive behavior.
-
-## v29 clean faded service images
-- Reverted to the clean service photographs from v27.
-- Removed mockup-derived image crops that contained baked-in text.
-- Left-side fade is now CSS-only.
-- Right side remains fully crisp.
-- Vehicles are shifted farther right in-frame.
-- Hero/header and commitments section remain unchanged.
-
-## v31 — approved full-vehicle service framing
-- Service trucks/van/forklift are kept fully in frame instead of cropped with `object-fit: cover`.
-- Photos are anchored to the right side to match the approved mockup.
-- A wider, softer fade is applied only on the left edge of each image.
-- The right side remains fully crisp.
-- Desktop, zoomed desktop, tablet, and mobile rules are included.
-- All other approved sections remain unchanged.
+This is a static website with no build process, making it easy to host on a simple static server or deployment platform.

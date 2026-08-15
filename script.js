@@ -252,13 +252,7 @@ function closeQuoteModal() {
 document.querySelectorAll(".js-open-email-quote").forEach((button) => {
   button.addEventListener("click", (event) => {
     event.preventDefault();
-
-    const infoForm = document.getElementById("quote-info-form");
-    if (infoForm) {
-      infoForm.scrollIntoView({ behavior: "smooth", block: "start" });
-      const firstField = infoForm.querySelector("input, textarea");
-      if (firstField) firstField.focus();
-    }
+    openQuoteModal();
   });
 });
 
