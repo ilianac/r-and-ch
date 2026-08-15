@@ -260,93 +260,6 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
-
-// ============================================================
-// V17 — Email quote modal
-// ============================================================
-(() => {
-  const quoteEmail = 'quotes@rchtransport.com';
-  const modal = document.getElementById("email-quote-modal");
-  const form = document.getElementById("email-quote-modal-form");
-  if (!modal || !form) return;
-
-  const openers = document.querySelectorAll(".js-open-email-quote");
-  const closers = modal.querySelectorAll("[data-close-email-quote]");
-
-  function isSpanish() {
-    return (document.documentElement.lang || "").toLowerCase().startsWith("es");
-  }
-
-  function openQuote(event) {
-    if (event) event.preventDefault();
-    modal.classList.add("is-open");
-    modal.setAttribute("aria-hidden", "false");
-    document.body.classList.add("email-quote-open");
-    const first = form.querySelector("input");
-    setTimeout(() => first && first.focus(), 50);
-  }
-
-  function closeQuote() {
-    modal.classList.remove("is-open");
-    modal.setAttribute("aria-hidden", "true");
-    document.body.classList.remove("email-quote-open");
-  }
-
-  openers.forEach(el => el.addEventListener("click", openQuote));
-  closers.forEach(el => el.addEventListener("click", closeQuote));
-
-  document.addEventListener("keydown", event => {
-    if (event.key === "Escape" && modal.classList.contains("is-open")) closeQuote();
-  });
-
-//   form.addEventListener("submit", event => {
-//     event.preventDefault();
-//     if (!form.reportValidity()) return;
-
-//     const d = new FormData(form);
-//     const es = isSpanish();
-
-//     const subject = es
-//       ? "Solicitud de cotización - R&CH Transport"
-//       : "Quote Request - R&CH Transport";
-
-//     const body = es
-//       ? `Hola R&CH Transport,
-
-// Me gustaría solicitar una cotización.
-
-// Nombre: ${d.get("name") || ""}
-// Correo electrónico: ${d.get("email") || ""}
-// Teléfono: ${d.get("phone") || ""}
-// Compañía: ${d.get("company") || ""}
-// Lugar de recolección: ${d.get("pickup") || ""}
-// Lugar de entrega: ${d.get("delivery") || ""}
-
-// Información del embarque / cotización:
-// ${d.get("details") || ""}
-
-// Gracias.`
-//       : `Hello R&CH Transport,
-
-// I would like to request a quote.
-
-// Name: ${d.get("name") || ""}
-// Email: ${d.get("email") || ""}
-// Phone: ${d.get("phone") || ""}
-// Company: ${d.get("company") || ""}
-// Pickup location: ${d.get("pickup") || ""}
-// Delivery location: ${d.get("delivery") || ""}
-
-// Shipment / quote details:
-// ${d.get("details") || ""}
-
-// Thank you.`;
-
-//     window.location.href =
-//       `mailto:${"info@rchtransport.com"}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-//   });
-// })();
-
 const form = document.getElementById("email-quote-modal-form");
 
 if (form) {
@@ -374,7 +287,13 @@ if (form) {
       });
 
       if (!response.ok) {
-        throw new Error("Form submission failed");
+        const errorData = await response.json();
+
+        console.error("Formspree error:", errorData);
+
+        throw new Error(
+          errorData.error || "Form submission failed"
+        );
       }
 
       form.reset();
