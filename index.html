@@ -260,16 +260,16 @@
 
       <div class="contact-card">
 
-        <form class="quote-info-form" id="quote-info-form">
+        <form class="quote-info-form" id="quote-info-form" action="https://formspree.io/f/xkjwzdyo" method="POST">
           <div class="form-grid">
             <label>
               <span data-i18n="form.name">Name</span>
-              <input type="text" name="name" autocomplete="name" data-i18n-placeholder="form.namePlaceholder" placeholder="Your name">
+              <input type="text" name="name" autocomplete="name" data-i18n-placeholder="form.namePlaceholder" placeholder="Your name" required>
             </label>
 
             <label>
               <span data-i18n="form.phone">Phone</span>
-              <input type="tel" name="phone" autocomplete="tel" data-i18n-placeholder="form.phonePlaceholder" placeholder="Phone number">
+              <input type="tel" name="phone" autocomplete="tel" data-i18n-placeholder="form.phonePlaceholder" placeholder="Phone number" required>
             </label>
 
             <label>
@@ -277,14 +277,19 @@
               <input type="text" name="company" autocomplete="organization" data-i18n-placeholder="form.companyPlaceholder" placeholder="Company name">
             </label>
 
+            <label>
+              <span>Email</span>
+              <input type="email" name="email" autocomplete="email" placeholder="Email address" required>
+            </label>
+
             <label class="form-full">
               <span data-i18n="form.details">Information to quote</span>
-              <textarea name="details" rows="4" data-i18n-placeholder="form.detailsPlaceholder" placeholder="Origin, destination, load type, timing and any special requirements"></textarea>
+              <textarea name="details" rows="4" data-i18n-placeholder="form.detailsPlaceholder" placeholder="Origin, destination, load type, timing and any special requirements" required></textarea>
             </label>
           </div>
 
           <button class="primary-button email-quote-submit" type="submit">
-            <span data-i18n="form.cta">Continue by email</span>
+            <span data-i18n="form.cta">Request Quote by Email</span>
           </button>
         </form>
       </div>

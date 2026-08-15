@@ -235,7 +235,42 @@ document.querySelectorAll(".lang-button").forEach((button) => {
 
 applyLanguage(currentLanguage);
 
+const emailModal = document.getElementById("email-quote-modal");
 
+function openQuoteModal() {
+  if (!emailModal) return;
+  emailModal.classList.add("is-open");
+  emailModal.setAttribute("aria-hidden", "false");
+}
+
+function closeQuoteModal() {
+  if (!emailModal) return;
+  emailModal.classList.remove("is-open");
+  emailModal.setAttribute("aria-hidden", "true");
+}
+
+document.querySelectorAll(".js-open-email-quote").forEach((button) => {
+  button.addEventListener("click", (event) => {
+    event.preventDefault();
+
+    const infoForm = document.getElementById("quote-info-form");
+    if (infoForm) {
+      infoForm.scrollIntoView({ behavior: "smooth", block: "start" });
+      const firstField = infoForm.querySelector("input, textarea");
+      if (firstField) firstField.focus();
+    }
+  });
+});
+
+document.querySelectorAll("[data-close-email-quote]").forEach((button) => {
+  button.addEventListener("click", closeQuoteModal);
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && emailModal && emailModal.classList.contains("is-open")) {
+    closeQuoteModal();
+  }
+});
 
 // V15 responsive navigation hardening
 function closeResponsiveMenu() {
@@ -260,9 +295,12 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
-const form = document.getElementById("email-quote-modal-form");
+const quoteForms = [
+  document.getElementById("quote-info-form"),
+  document.getElementById("email-quote-modal-form")
+].filter(Boolean);
 
-if (form) {
+quoteForms.forEach((form) => {
   const submitButton = form.querySelector('button[type="submit"]');
 
   form.addEventListener("submit", async (event) => {
@@ -272,10 +310,13 @@ if (form) {
       return;
     }
 
-    const originalHTML = submitButton.innerHTML;
+    const originalHTML = submitButton ? submitButton.innerHTML : "";
+    let submissionSucceeded = false;
 
-    submitButton.disabled = true;
-    submitButton.textContent = "SENDING...";
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitButton.textContent = "SENDING...";
+    }
 
     try {
       const response = await fetch(form.action, {
@@ -290,27 +331,32 @@ if (form) {
         throw new Error("Form submission failed");
       }
 
+      submissionSucceeded = true;
       form.reset();
 
-      const successMessage = document.getElementById("quote-success-message");
-
-      if (successMessage) {
-        successMessage.hidden = false;
+      if (form.id === "email-quote-modal-form") {
+        const successMessage = document.getElementById("quote-success-message");
+        if (successMessage) {
+          successMessage.hidden = false;
+        }
       }
 
-      submitButton.style.display = "none";
+      if (submitButton && form.id === "email-quote-modal-form") {
+        submitButton.style.display = "none";
+      }
+
+      if (form.id === "quote-info-form") {
+        alert("Your quote request has been sent successfully.");
+      }
 
     } catch (error) {
       console.error(error);
-
-      alert(
-        "We couldn't send your request. Please try again."
-      );
-    }  finally {
-      if (!submissionSucceeded) {
+      alert("We couldn't send your request. Please try again.");
+    } finally {
+      if (submitButton && !submissionSucceeded) {
         submitButton.disabled = false;
         submitButton.innerHTML = originalHTML;
       }
     }
   });
-}
+});
