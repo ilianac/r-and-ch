@@ -1,89 +1,382 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>R&CH</title>
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <!-- Font Awesome icons (free version)-->
-        <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
-        <!-- Google fonts-->
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link href="https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&amp;display=swap" rel="stylesheet" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
-    </head>
-    <body>
-        <!-- Background Video-->
-        <video class="bg-video" playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop"><source src="assets/mp4/bg.mp4" type="video/mp4" /></video>
-        <!-- Masthead-->
-        <div class="masthead">
-            <div class="masthead-content text-white">
-                <div class="container-fluid px-4 px-lg-0">
-                    <h1 class="fst-italic lh-1 mb-4">Our Website is Coming Soon</h1>
-                    <p class="mb-5">We're working hard to finish the development of this site.</p>
-                    <br>
-                    <div class="container-fluid px-4 px-md-0">
-                        <h3 class="fst-italic lh-1 mb-4">Contact Us</h3>
-                        <p>info@rchtransport.com</p>
-                    </div>
-                    
-                    <!-- * * * * * * * * * * * * * * *-->
-                    <!-- * * SB Forms Contact Form * *-->
-                    <!-- * * * * * * * * * * * * * * *-->
-                    <!-- This form is pre-integrated with SB Forms.-->
-                    <!-- To make this form functional, sign up at-->
-                    <!-- https://startbootstrap.com/solution/contact-forms-->
-                    <!-- to get an API token!-->
-                    <form id="contactForm" data-sb-form-api-token="API_TOKEN">
-                        <!-- Email address input-->
-                        <!-- <div class="row input-group-newsletter">
-                            <div class="col"><input class="form-control" id="email" type="email" placeholder="Enter email address..." aria-label="Enter email address..." data-sb-validations="required,email" /></div>
-                            <div class="col-auto"><button class="btn btn-primary disabled" id="submitButton" type="submit">Notify Me!</button></div>
-                        </div>
-                        <div class="invalid-feedback mt-2" data-sb-feedback="email:required">An email is required.</div>
-                        <div class="invalid-feedback mt-2" data-sb-feedback="email:email">Email is not valid.</div> -->
-                        <!-- Submit success message-->
-                        <!---->
-                        <!-- This is what your users will see when the form-->
-                        <!-- has successfully submitted-->
-                        <!-- <div class="d-none" id="submitSuccessMessage">
-                            <div class="text-center mb-3 mt-2">
-                                <div class="fw-bolder">Form submission successful!</div>
-                                To activate this form, sign up at
-                                <br />
-                                <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
-                            </div>
-                        </div> -->
-                        <!-- Submit error message-->
-                        <!---->
-                        <!-- This is what your users will see when there is-->
-                        <!-- an error submitting the form-->
-                        <!-- <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3 mt-2">Error sending message!</div></div> -->
-                    </form>
-                </div>
-            </div>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="R&CH Transport, LLC provides hot shot, local and nationwide freight transportation from Laredo, Texas.">
+  <title>R&CH Transport, LLC</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+</head>
+
+<body>
+  <header class="header">
+    <a class="logo-wrap" href="#home" aria-label="R&CH Transport home">
+      <img src="assets/rch-logo.svg" alt="R&CH Transport, LLC">
+    </a>
+
+    <button class="mobile-menu-button" aria-label="Toggle menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+    </button>
+
+    <div class="header-right">
+      <nav class="nav">
+        <a href="#home" data-i18n="nav.home">Home</a>
+        <a href="#services" data-i18n="nav.services">Services</a>
+        <a href="#contact" data-i18n="nav.contact">Contact</a>
+      </nav>
+
+      
+<a href="#quote-form" class="quote-button header-quote-trigger js-open-email-quote">
+  <span class="quote-dot">◎</span>
+  <span class="quote-en">GET A QUOTE</span>
+  <span class="quote-es">SOLICITAR COTIZACIÓN</span>
+</a>
+<div class="language-toggle" aria-label="Language">
+        <button type="button" class="lang-button active" data-lang="en">EN</button>
+        <span>/</span>
+        <button type="button" class="lang-button" data-lang="es">ES</button>
+      </div>
+
+      
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-copy">
+
+        <h1>
+          <span data-i18n="hero.line1">Delivering Solutions.</span><br>
+          <em data-i18n="hero.line2">Driving</em>
+          <span data-i18n="hero.line3">Trust.</span>
+        </h1>
+
+        <div class="short-line"></div>
+
+        <p class="hero-description" data-i18n="hero.description">
+          From Laredo to any city in the USA. Reliable transport services you can count on.
+        </p>
+
+        <div class="hero-actions">
+<a href="#quote-form" class="primary-button hero-quote-trigger js-open-email-quote">
+  <span class="quote-dot">◎</span>
+  <span class="quote-en">GET A QUOTE</span>
+  <span class="quote-es">SOLICITAR COTIZACIÓN</span>
+</a>
+
+          
+
+          <a class="secondary-link" href="#services">
+            <span data-i18n="buttons.services">Our Services</span>
+            <span class="arrow">→</span>
+          </a>
         </div>
-        <!-- Social Icons-->
-        <!-- For more icon options, visit https://fontawesome.com/icons?d=gallery&p=2&s=brands-->
-        <div class="social-icons">
-            <div class="d-flex flex-row flex-lg-column justify-content-center align-items-center h-100 mt-3 mt-lg-0">
-                <!-- <a class="btn btn-dark m-3" href="#!"><i class="fab fa-twitter"></i></a>
-                <a class="btn btn-dark m-3" href="#!"><i class="fab fa-facebook-f"></i></a>
-                <a class="btn btn-dark m-3" href="#!"><i class="fab fa-instagram"></i></a> -->
-            </div>
+      </div>
+
+      <div class="hero-image">
+        <img src="assets/hero-van.jpg" alt="R&CH Transport white van on the highway">
+      </div>
+    </section>
+
+    <section class="benefits" id="services">
+      <article>
+        <div class="benefit-icon shield-icon">✓</div>
+        <div>
+          <h3 data-i18n="benefits.reliable.title">Reliable</h3>
+          <p data-i18n="benefits.reliable.text">You can count on us to get it there.</p>
         </div>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-        <!-- * *                               SB Forms JS                               * *-->
-        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-    </body>
+      </article>
+
+      <article>
+        <div class="benefit-icon">◷</div>
+        <div>
+          <h3 data-i18n="benefits.ontime.title">On Time</h3>
+          <p data-i18n="benefits.ontime.text">Moving your business forward.</p>
+        </div>
+      </article>
+
+      <article>
+        <div class="benefit-icon">⌖</div>
+        <div>
+          <h3 data-i18n="benefits.anywhere.title">Anywhere</h3>
+          <p data-i18n="benefits.anywhere.text">From Laredo to any city in the USA.</p>
+        </div>
+      </article>
+
+      <article>
+        <div class="benefit-icon">◎</div>
+        <div>
+          <h3 data-i18n="benefits.team.title">Team Driver</h3>
+          <p data-i18n="benefits.team.text">Team driver available when required.</p>
+        </div>
+      </article>
+    </section>
+
+    
+    <section class="service-showcase-v26" id="services">
+
+      <article class="service-row-v26">
+        <div class="service-copy-v26">
+          <div class="service-icon-v26">
+<svg viewBox="0 0 48 48" aria-hidden="true">
+  <circle cx="24" cy="24" r="17"/>
+  <path d="M7 24h34M24 7c6 6 8 11 8 17s-2 11-8 17M24 7c-6 6-8 11-8 17s2 11 8 17"/>
+</svg></div>
+          <div class="service-content-v26">
+            <span class="service-index-v26">01</span>
+            <h2 data-i18n="detail.international.title">International Transport</h2>
+            <p class="service-location-v26" data-i18n="detail.international.subtitle">Mexico ↔ USA</p>
+            <p class="service-desc-v26" data-i18n="svc.international.description">
+              Reliable cross-border transportation between Mexico and the United States for time-sensitive and specialized freight.
+            </p>
+            <ul class="service-features-v26">
+              <li data-i18n="detail.items.trailer53">53-foot trailers</li>
+              <li data-i18n="detail.items.flatbeds">Flatbeds / platforms</li>
+              <li data-i18n="detail.items.light">Light transport: Hot Shot, 3.5-ton trucks and Sprinter Van</li>
+              <li data-i18n="detail.items.handcarrier">Hand Carrier</li>
+            </ul>
+          </div>
+        </div>
+        <div class="service-image-v26">
+          <img src="assets/service_01.png" alt="International freight crossing between Mexico and the United States">
+        </div>
+      </article>
+
+      <article class="service-row-v26">
+        <div class="service-copy-v26">
+          <div class="service-icon-v26">
+<svg viewBox="0 0 48 48" aria-hidden="true">
+  <path d="M7 17l5-4 6 2 5-3 7 2 6-1 5 5-2 5 2 4-5 4-6-1-4 4-7-2-5 2-4-5-4-3 2-4z"/>
+</svg></div>
+          <div class="service-content-v26">
+            <span class="service-index-v26">02</span>
+            <h2 data-i18n="detail.national.title">National Service</h2>
+            <p class="service-location-v26" data-i18n="detail.national.subtitle">Mexico or USA</p>
+            <p class="service-desc-v26" data-i18n="svc.national.description">
+              Flexible transportation solutions throughout Mexico or the United States, with options for large and light freight.
+            </p>
+            <ul class="service-features-v26">
+              <li data-i18n="detail.items.trailer53">53-foot trailers</li>
+              <li data-i18n="detail.items.flatbeds">Flatbeds / platforms</li>
+              <li data-i18n="detail.items.light">Light transport: Hot Shot, 3.5-ton trucks and Sprinter Van</li>
+            </ul>
+          </div>
+        </div>
+        <div class="service-image-v26">
+          <img src="assets/service_02.png" alt="National freight transportation by highway">
+        </div>
+      </article>
+
+      <article class="service-row-v26">
+        <div class="service-copy-v26">
+          <div class="service-icon-v26">
+<svg viewBox="0 0 48 48" aria-hidden="true">
+  <path d="M24 42s13-12 13-23A13 13 0 0 0 11 19c0 11 13 23 13 23z"/>
+  <circle cx="24" cy="19" r="5"/>
+</svg></div>
+          <div class="service-content-v26">
+            <span class="service-index-v26">03</span>
+            <h2 data-i18n="detail.local.title">Local Service</h2>
+            <p class="service-location-v26" data-i18n="detail.local.subtitle">Monterrey • Laredo • San Antonio</p>
+            <p class="service-desc-v26" data-i18n="svc.local.description">
+              Local and regional transportation in our core service areas for freight that needs responsive, direct delivery.
+            </p>
+            <ul class="service-features-v26">
+              <li data-i18n="detail.items.trailer53">53-foot trailers</li>
+              <li data-i18n="detail.items.flatbeds">Flatbeds / platforms</li>
+              <li data-i18n="detail.items.light">Light transport: Hot Shot, 3.5-ton trucks and Sprinter Van</li>
+            </ul>
+          </div>
+        </div>
+        <div class="service-image-v26">
+          <img src="assets/service_03.png" alt="Local light transportation in an urban service area">
+        </div>
+      </article>
+
+      <article class="service-row-v26">
+        <div class="service-copy-v26">
+          <div class="service-icon-v26">
+<svg viewBox="0 0 48 48" aria-hidden="true">
+  <path d="M7 20L24 9l17 11v20H7z"/>
+  <path d="M14 26h20v14H14zM18 30h5v5h-5zM26 30h5v5h-5z"/>
+</svg></div>
+          <div class="service-content-v26">
+            <span class="service-index-v26">04</span>
+            <h2 data-i18n="detail.other.title">Additional Services</h2>
+            <p class="service-location-v26" data-i18n="detail.other.subtitle">Cross-border support</p>
+            <p class="service-desc-v26" data-i18n="svc.additional.description">
+              Additional logistics support to help freight move efficiently across borders and between transportation units.
+            </p>
+            <ul class="service-features-v26">
+              <li data-i18n="detail.other.crossings">International border crossings</li>
+              <li data-i18n="detail.other.transload">Freight transloading operations</li>
+            </ul>
+          </div>
+        </div>
+        <div class="service-image-v26">
+          <img src="assets/service_04.png" alt="Freight transloading with forklift and trailer">
+        </div>
+      </article>
+
+    </section>
+
+
+    <section class="commitments-section">
+      <div class="commitments-copy">
+        <h2 data-i18n="commit.title">Visibility, communication and options when timing matters.</h2>
+      </div>
+
+      <div class="commitments-list">
+        <article>
+          <span>01</span>
+          <div>
+            <h3 data-i18n="commit.gps.title">Direct Shipment Communication</h3>
+            <p data-i18n="commit.gps.text">Direct communication throughout your shipment, supported by GPS tracking on our units.</p>
+          </div>
+        </article>
+
+        <article>
+          <span>02</span>
+          <div>
+            <h3 data-i18n="commit.urgency.title">Time vs. Cost Options</h3>
+            <p data-i18n="commit.urgency.text">For urgent freight, we provide timing and pricing alternatives so you can evaluate cost against urgency.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+      <div>
+        <h2 data-i18n="contact.title">Contact us.</h2>
+        <p data-i18n="contact.text">Tell us about your shipment and we’ll help you find the right transportation solution.</p>
+      </div>
+
+      <div class="contact-card">
+
+        <form class="quote-info-form" id="quote-info-form">
+          <div class="form-grid">
+            <label>
+              <span data-i18n="form.name">Name</span>
+              <input type="text" name="name" autocomplete="name" data-i18n-placeholder="form.namePlaceholder" placeholder="Your name">
+            </label>
+
+            <label>
+              <span data-i18n="form.phone">Phone</span>
+              <input type="tel" name="phone" autocomplete="tel" data-i18n-placeholder="form.phonePlaceholder" placeholder="Phone number">
+            </label>
+
+            <label>
+              <span data-i18n="form.company">Company</span>
+              <input type="text" name="company" autocomplete="organization" data-i18n-placeholder="form.companyPlaceholder" placeholder="Company name">
+            </label>
+
+            <label class="form-full">
+              <span data-i18n="form.details">Information to quote</span>
+              <textarea name="details" rows="4" data-i18n-placeholder="form.detailsPlaceholder" placeholder="Origin, destination, load type, timing and any special requirements"></textarea>
+            </label>
+          </div>
+
+          <button class="primary-button email-quote-submit" type="button">
+            <span data-i18n="form.cta">Continue on WhatsApp</span>
+          </button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-logo">
+      <img src="assets/rch-logo.svg" alt="R&CH Transport">
+    </div>
+
+    <p data-i18n="footer.tagline">Professional • Reliable • Moving Forward</p>
+
+    <span>© <span id="year"></span> R&CH Transport, LLC</span>
+  </footer>
+
+  <!-- Turnstile-protected WhatsApp modal -->
+  
+
+  <script src="script.js"></script>
+
+<div class="email-quote-modal" id="email-quote-modal" aria-hidden="true">
+  <div class="email-quote-backdrop" data-close-email-quote></div>
+  <section class="email-quote-dialog" role="dialog" aria-modal="true" aria-labelledby="email-quote-title">
+    <button class="email-quote-close" type="button" aria-label="Close quote form" data-close-email-quote>×</button>
+
+    <div class="email-quote-heading">
+      <span class="quote-en">
+        <span class="eyebrow">R&amp;CH TRANSPORT</span>
+        <h2 id="email-quote-title">Request a Quote</h2>
+        <p>Tell us about your shipment. We’ll prepare the email for you.</p>
+      </span>
+      <span class="quote-es">
+        <span class="eyebrow">R&amp;CH TRANSPORT</span>
+        <h2>Solicitar Cotización</h2>
+        <p>Cuéntenos sobre su embarque. Prepararemos el correo por usted.</p>
+      </span>
+    </div>
+
+    <form id="email-quote-modal-form" class="email-quote-modal-form">
+      <div class="quote-form-grid">
+        <label>
+          <span class="quote-en">Name *</span><span class="quote-es">Nombre *</span>
+          <input type="text" name="name" autocomplete="name" required>
+        </label>
+
+        <label>
+          <span class="quote-en">Phone *</span><span class="quote-es">Teléfono *</span>
+          <input type="tel" name="phone" autocomplete="tel" required>
+        </label>
+
+        <label>
+          <span class="quote-en">Company</span><span class="quote-es">Compañía</span>
+          <input type="text" name="company" autocomplete="organization">
+        </label>
+
+        <label>
+          <span class="quote-en">Email *</span><span class="quote-es">Correo Electrónico *</span>
+          <input type="email" name="email" autocomplete="email" required>
+        </label>
+
+        <label>
+          <span class="quote-en">Pickup location</span><span class="quote-es">Lugar de recolección</span>
+          <input type="text" name="pickup">
+        </label>
+
+        <label>
+          <span class="quote-en">Delivery location</span><span class="quote-es">Lugar de entrega</span>
+          <input type="text" name="delivery">
+        </label>
+
+        <label class="quote-form-full">
+          <span class="quote-en">Shipment / quote details *</span>
+          <span class="quote-es">Información del embarque / cotización *</span>
+          <textarea name="details" rows="5" required placeholder=""></textarea>
+        </label>
+      </div>
+
+      <div class="email-quote-actions">
+        <button type="submit" class="primary-button email-quote-send">
+          <span class="email-symbol">✉</span>
+          <span class="quote-en">OPEN EMAIL TO SEND</span>
+          <span class="quote-es">ABRIR CORREO PARA ENVIAR</span>
+        </button>
+        <p class="email-quote-note">
+          <span class="quote-en">This opens your email app with the quote information filled in.</span>
+          <span class="quote-es">Esto abre su aplicación de correo con la información de la cotización ya preparada.</span>
+        </p>
+      </div>
+    </form>
+  </section>
+</div>
+
+</body>
 </html>

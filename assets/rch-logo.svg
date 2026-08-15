@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 760 250"
+     role="img"
+     aria-labelledby="title">
+  <title id="title">R&amp;CH Transport, LLC</title>
+
+  <!-- Transparent background -->
+
+  <text x="28"
+        y="128"
+        font-family="Georgia, 'Times New Roman', serif"
+        font-size="132"
+        font-weight="400"
+        letter-spacing="-8"
+        fill="#18386C">R&amp;CH</text>
+
+  <!-- Road bar -->
+  <rect x="31" y="145" width="560" height="20" rx="2" fill="#18386C"/>
+
+  <!-- Highway lane markings -->
+  <rect x="56"  y="151" width="38" height="7" rx="1" fill="#D8EF2F"/>
+  <rect x="112" y="151" width="38" height="7" rx="1" fill="#D8EF2F"/>
+  <rect x="168" y="151" width="38" height="7" rx="1" fill="#D8EF2F"/>
+  <rect x="224" y="151" width="38" height="7" rx="1" fill="#D8EF2F"/>
+  <rect x="280" y="151" width="38" height="7" rx="1" fill="#D8EF2F"/>
+  <rect x="336" y="151" width="38" height="7" rx="1" fill="#D8EF2F"/>
+  <rect x="392" y="151" width="38" height="7" rx="1" fill="#D8EF2F"/>
+  <rect x="448" y="151" width="38" height="7" rx="1" fill="#D8EF2F"/>
+  <rect x="504" y="151" width="38" height="7" rx="1" fill="#D8EF2F"/>
+
+  <!-- Arrow -->
+  <rect x="544" y="145" width="60" height="20" fill="#18386C"/>
+  <path d="M586 132 L675 155 L586 178 Z" fill="#18386C"/>
+
+  <!-- Company name -->
+  <text x="31"
+        y="226"
+        font-family="Arial, Helvetica, sans-serif"
+        font-size="38"
+        font-weight="700"
+        letter-spacing="15"
+        fill="#18386C">TRANSPORT, LLC</text>
+</svg>

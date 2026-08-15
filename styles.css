@@ -1,0 +1,5205 @@
+:root {
+  --navy: #0f2b55;
+  --navy-2: #173b72;
+  --lime: #d9ef2f;
+  --white: #ffffff;
+  --off-white: #f7f7f4;
+  --ink: #10233f;
+  --text: #222a35;
+  --muted: #6d7480;
+  --line: #e2e5e9;
+  --max: 1536px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--white);
+  color: var(--text);
+  font-family: "DM Sans", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+body.modal-open { overflow: hidden; }
+
+a { color: inherit; text-decoration: none; }
+button { font: inherit; }
+img { display: block; max-width: 100%; }
+
+.header {
+  height: 96px;
+  display: grid;
+  grid-template-columns: minmax(330px, 36%) 1fr;
+  position: relative;
+  z-index: 20;
+  background: var(--navy);
+}
+
+.logo-wrap {
+  height: 96px;
+  background: white;
+  display: flex;
+  align-items: center;
+  padding: 11px 44px 9px max(46px, calc((100vw - var(--max))/2 + 46px));
+  position: relative;
+}
+
+.logo-wrap::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -74px;
+  width: 150px;
+  height: 96px;
+  background: white;
+  transform: skewX(40deg);
+  transform-origin: top;
+  z-index: 0;
+}
+
+.logo-wrap img {
+  width: 290px;
+  max-height: 82px;
+  position: relative;
+  z-index: 2;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 29px;
+  padding: 0 max(40px, calc((100vw - var(--max))/2 + 40px)) 0 90px;
+  color: white;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+
+.nav a {
+  position: relative;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: -10px;
+  height: 2px;
+  background: var(--lime);
+  transition: right .2s ease;
+}
+
+.nav a:hover::after { right: 0; }
+
+.language-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+}
+
+.lang-button {
+  border: 0;
+  background: none;
+  color: rgba(255,255,255,.55);
+  padding: 5px 2px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.lang-button.active { color: var(--lime); }
+
+.quote-button,
+.primary-button {
+  border: 0;
+  background: var(--navy);
+  color: white;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.quote-button {
+  border: 2px solid var(--lime);
+  border-radius: 8px;
+  padding: 15px 20px;
+  display: inline-flex;
+  gap: 11px;
+  align-items: center;
+  color: var(--lime);
+  white-space: nowrap;
+}
+
+.whatsapp-icon {
+  width: 26px;
+  height: 26px;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  display: inline-grid;
+  place-items: center;
+  font-size: 10px;
+}
+
+.mobile-menu-button {
+  display: none;
+  border: 0;
+  background: none;
+  color: white;
+}
+
+.mobile-menu-button span {
+  display: block;
+  width: 27px;
+  height: 2px;
+  background: currentColor;
+  margin: 6px 0;
+}
+
+.hero {
+  min-height: 515px;
+  display: grid;
+  grid-template-columns: 47% 53%;
+  overflow: hidden;
+  background: white;
+}
+
+.hero-copy {
+  padding: 88px 55px 70px max(78px, calc((100vw - var(--max))/2 + 78px));
+  position: relative;
+  z-index: 3;
+}
+
+.hero-copy::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  right: -120px;
+  width: 240px;
+  height: 100%;
+  background: white;
+  transform: skewX(-21deg);
+}
+
+.kicker {
+  margin: 0 0 17px;
+  color: var(--navy-2);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  margin: 0;
+  font-family: "Manrope", sans-serif;
+  text-transform: uppercase;
+  color: var(--navy);
+  font-size: clamp(40px, 4.5vw, 69px);
+  line-height: .98;
+  letter-spacing: -.045em;
+}
+
+.hero h1 em {
+  font-style: normal;
+  color: var(--lime);
+}
+
+.short-line,
+.mini-line,
+.section-heading > span {
+  width: 60px;
+  height: 3px;
+  background: var(--lime);
+}
+
+.short-line { margin: 27px 0 22px; }
+
+.hero-description {
+  max-width: 520px;
+  margin: 0 0 24px;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 29px;
+}
+
+.primary-button {
+  background: var(--navy);
+  border-radius: 7px;
+  padding: 15px 25px;
+  display: inline-flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.primary-button .whatsapp-icon { color: var(--lime); }
+
+.secondary-link {
+  display: inline-flex;
+  gap: 14px;
+  align-items: center;
+  color: var(--navy);
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.secondary-link .arrow {
+  color: var(--lime);
+  font-size: 27px;
+}
+
+.hero-image {
+  min-height: 515px;
+  overflow: hidden;
+  background: #cbd6df;
+}
+
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 57% center;
+}
+
+.benefits {
+  min-height: 122px;
+  background: var(--navy);
+  color: white;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 22px max(70px, calc((100vw - var(--max))/2 + 70px));
+}
+
+.benefits article {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: 58px 1fr;
+  gap: 15px;
+  align-items: center;
+  padding: 0 30px;
+  border-right: 1px solid rgba(255,255,255,.22);
+}
+
+.benefits article:first-child { padding-left: 0; }
+.benefits article:last-child { border-right: 0; }
+
+.benefit-icon {
+  width: 48px;
+  height: 48px;
+  border: 3px solid var(--lime);
+  color: var(--lime);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 24px;
+}
+
+.shield-icon {
+  border-radius: 40% 40% 50% 50%;
+}
+
+.benefits h3 {
+  margin: 0 0 5px;
+  color: white;
+  text-transform: uppercase;
+  font-size: 15px;
+}
+
+.benefits p {
+  margin: 0;
+  color: rgba(255,255,255,.8);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.fleet-section {
+  background: #fbfbfa;
+  padding: 54px max(50px, calc((100vw - var(--max))/2 + 50px)) 75px;
+}
+
+.section-heading {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.section-heading > span {
+  display: block;
+  margin: 0 auto 12px;
+  width: 42px;
+  height: 2px;
+}
+
+.section-heading h2 {
+  margin: 0;
+  font-family: "Manrope";
+  font-size: 34px;
+  color: var(--navy);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+
+.section-heading p {
+  margin: 6px 0 0;
+  font-size: 14px;
+  color: #424852;
+}
+
+.fleet-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.fleet-card {
+  min-height: 265px;
+  background: white;
+  border: 1px solid #eceef0;
+  border-radius: 10px;
+  box-shadow: 0 4px 18px rgba(15,43,85,.08);
+  display: grid;
+  grid-template-columns: 1fr 47%;
+  overflow: hidden;
+}
+
+.fleet-card-copy {
+  padding: 24px 10px 22px 24px;
+  position: relative;
+  z-index: 2;
+}
+
+.unit {
+  color: #b8cc00;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin: 0 0 5px;
+  font-size: 13px;
+}
+
+.fleet-card h3 {
+  margin: 0;
+  color: var(--navy);
+  font-size: 17px;
+  text-transform: uppercase;
+}
+
+.mini-line {
+  width: 34px;
+  height: 2px;
+  margin: 15px 0 13px;
+}
+
+.fleet-card ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.fleet-card li {
+  margin: 0 0 10px;
+  font-size: 11.5px;
+  white-space: nowrap;
+}
+
+.fleet-card li::before {
+  content: "◇";
+  color: #c7dd00;
+  margin-right: 8px;
+  font-weight: 700;
+}
+
+.fleet-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  align-self: end;
+  padding: 20px 14px 18px 0;
+}
+
+.about-section {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 100px 70px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 85px;
+  align-items: center;
+}
+
+.about-art {
+  min-height: 440px;
+  background:
+    radial-gradient(circle at 30% 35%, rgba(217,239,47,.2), transparent 18%),
+    linear-gradient(145deg, var(--navy-2), var(--navy));
+  color: white;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-art::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.055) 1px, transparent 1px);
+  background-size: 55px 55px;
+}
+
+.route-line {
+  position: absolute;
+  left: 15%;
+  right: 15%;
+  top: 50%;
+  height: 3px;
+  background: var(--lime);
+}
+
+.route-arrow {
+  position: relative;
+  z-index: 2;
+  color: var(--lime);
+  font-size: 130px;
+  line-height: 1;
+}
+
+.about-art span,
+.about-art strong {
+  position: absolute;
+  z-index: 2;
+  bottom: 50px;
+  letter-spacing: .15em;
+}
+
+.about-art span { left: 45px; }
+.about-art strong { right: 45px; }
+
+.about-copy h2,
+.contact-section h2 {
+  font-family: "Manrope";
+  color: var(--navy);
+  font-size: clamp(38px, 4vw, 60px);
+  line-height: 1.03;
+  letter-spacing: -.045em;
+  margin: 0 0 27px;
+}
+
+.about-copy > p:not(.kicker),
+.contact-section > div:first-child > p:not(.kicker) {
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.contact-section {
+  background: #f5f6f7;
+  padding: 100px max(70px, calc((100vw - var(--max))/2 + 70px));
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 100px;
+}
+
+.contact-card {
+  background: white;
+  border: 1px solid var(--line);
+  padding: 30px;
+}
+
+.contact-card > div {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 20px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.contact-card span {
+  color: var(--white);
+  font-size: 13px;
+}
+
+.contact-card strong,
+.contact-card a {
+  color: var(--navy);
+  font-weight: 700;
+}
+
+.contact-card .primary-button {
+  margin-top: 27px;
+}
+
+.footer {
+  min-height: 94px;
+  background: var(--navy);
+  color: white;
+  padding: 18px max(60px, calc((100vw - var(--max))/2 + 60px));
+  display: grid;
+  grid-template-columns: 220px 1fr auto;
+  align-items: center;
+  gap: 45px;
+}
+
+.footer-logo {
+  background: white;
+  padding: 5px 10px;
+  width: 195px;
+}
+
+.footer p {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: .17em;
+  font-size: 12px;
+  text-align: center;
+}
+
+.footer > span {
+  color: rgba(255,255,255,.55);
+  font-size: 11px;
+}
+
+/* Modal / Turnstile */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+}
+
+.modal.open {
+  display: grid;
+  place-items: center;
+}
+
+.modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(7,20,40,.76);
+  backdrop-filter: blur(4px);
+}
+
+.modal-card {
+  position: relative;
+  z-index: 2;
+  width: min(92vw, 500px);
+  background: white;
+  padding: 38px;
+  box-shadow: 0 35px 100px rgba(0,0,0,.32);
+}
+
+.modal-card h2 {
+  margin: 0 0 15px;
+  font-family: "Manrope";
+  color: var(--navy);
+  font-size: 34px;
+  letter-spacing: -.04em;
+}
+
+.modal-card > p:not(.kicker):not(.verification-status) {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.modal-close {
+  position: absolute;
+  right: 13px;
+  top: 8px;
+  border: 0;
+  background: none;
+  color: var(--muted);
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.verification-status {
+  min-height: 20px;
+  margin: 15px 0 0;
+  color: var(--navy);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.verification-status.error { color: #ad3030; }
+
+.dev-note {
+  display: block;
+  margin-top: 14px;
+  padding-top: 13px;
+  border-top: 1px solid var(--line);
+  color: #8a6c1c;
+  line-height: 1.4;
+}
+
+/* Tablet/mobile */
+@media (max-width: 1120px) {
+  .header {
+    grid-template-columns: 280px 1fr;
+  }
+
+  .logo-wrap {
+    padding-left: 24px;
+  }
+
+  .logo-wrap img { width: 230px; }
+
+  .header-right {
+    gap: 18px;
+    padding-right: 22px;
+  }
+
+  .nav { gap: 18px; }
+  .nav a { font-size: 11px; }
+
+  .quote-button {
+    padding: 12px 14px;
+    font-size: 11px;
+  }
+
+  .benefits {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .benefits article {
+    padding: 0 18px;
+  }
+
+  .fleet-card {
+    grid-template-columns: 1fr;
+  }
+
+  .fleet-card img {
+    height: 150px;
+    padding: 0 18px 15px;
+  }
+}
+
+@media (max-width: 850px) {
+  .header {
+    height: 82px;
+    display: flex;
+    justify-content: space-between;
+    background: white;
+  }
+
+  .logo-wrap {
+    height: 82px;
+    width: 220px;
+    padding: 8px 15px;
+  }
+
+  .logo-wrap::after { display: none; }
+
+  .logo-wrap img { width: 200px; }
+
+  .mobile-menu-button {
+    display: block;
+    color: var(--navy);
+    margin-right: 18px;
+    z-index: 51;
+  }
+
+  .header-right {
+    display: none;
+    position: absolute;
+    top: 82px;
+    left: 15px;
+    right: 15px;
+    background: var(--navy);
+    padding: 25px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 22px;
+    box-shadow: 0 25px 55px rgba(0,0,0,.22);
+  }
+
+  .header-right.open { display: flex; }
+
+  .nav {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 20px;
+  }
+
+  .language-toggle {
+    justify-content: center;
+  }
+
+  .quote-button {
+    justify-content: center;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-copy {
+    padding: 70px 24px 55px;
+  }
+
+  .hero-copy::after { display: none; }
+
+  .hero-image {
+    min-height: 365px;
+  }
+
+  .benefits {
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    padding: 10px 20px;
+  }
+
+  .benefits article {
+    padding: 25px 15px;
+    border-right: 0;
+    border-bottom: 1px solid rgba(255,255,255,.18);
+  }
+
+  .fleet-section {
+    padding: 55px 20px;
+  }
+
+  .fleet-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .fleet-card {
+    grid-template-columns: 1fr 44%;
+  }
+
+  .fleet-card img {
+    height: 100%;
+    padding: 18px;
+  }
+
+  .about-section {
+    padding: 75px 20px;
+    grid-template-columns: 1fr;
+    gap: 45px;
+  }
+
+  .contact-section {
+    padding: 75px 20px;
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .footer {
+    padding: 28px 20px;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 17px;
+  }
+}
+
+@media (max-width: 520px) {
+  .hero h1 {
+    font-size: 44px;
+  }
+
+  .hero-actions {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .benefits {
+    grid-template-columns: 1fr;
+  }
+
+  .fleet-card {
+    grid-template-columns: 1fr;
+  }
+
+  .fleet-card img {
+    height: 175px;
+  }
+
+  .fleet-card li {
+    white-space: normal;
+  }
+
+  .contact-card > div {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition: none !important; }
+}
+
+
+/* ============================================================
+   V2 APPROVED DESIGN OVERRIDES
+   Cleaner header + corrected hero image proportions
+   ============================================================ */
+
+.header {
+  height: 100px;
+  display: grid;
+  grid-template-columns: 34% 66%;
+  position: relative;
+  z-index: 20;
+  background: #fff;
+}
+
+.logo-wrap {
+  height: 100px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  padding: 7px 36px 5px max(58px, calc((100vw - var(--max))/2 + 58px));
+  position: relative;
+}
+
+.logo-wrap::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -92px;
+  width: 170px;
+  height: 100px;
+  background: #fff;
+  transform: skewX(39deg);
+  transform-origin: top;
+  z-index: 0;
+}
+
+.logo-wrap img {
+  width: 265px;
+  max-height: 88px;
+  object-fit: contain;
+  position: relative;
+  z-index: 2;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 26px;
+  padding: 0 max(42px, calc((100vw - var(--max))/2 + 42px)) 0 82px;
+  color: var(--navy);
+  background: #fff;
+}
+
+.nav a {
+  color: var(--navy);
+}
+
+.lang-button {
+  color: rgba(15,43,85,.42);
+}
+
+.lang-button.active {
+  color: #aebf00;
+}
+
+.quote-button {
+  border: 0;
+  background: var(--navy);
+  color: var(--lime);
+  border-radius: 7px;
+  padding: 16px 22px;
+  box-shadow: none;
+}
+
+.hero {
+  min-height: 475px;
+  display: grid;
+  grid-template-columns: 42% 58%;
+  overflow: hidden;
+  background: #fff;
+}
+
+.hero-copy {
+  padding: 66px 48px 50px max(64px, calc((100vw - var(--max))/2 + 64px));
+  position: relative;
+  z-index: 3;
+}
+
+.hero-copy::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  right: -108px;
+  width: 220px;
+  height: 100%;
+  background: #fff;
+  transform: skewX(-20deg);
+}
+
+.hero h1 {
+  margin: 0;
+  font-family: "Manrope", sans-serif;
+  text-transform: uppercase;
+  color: var(--navy);
+  font-size: clamp(42px, 4.1vw, 62px);
+  line-height: .98;
+  letter-spacing: -.045em;
+}
+
+.hero-description {
+  max-width: 470px;
+  margin: 0 0 24px;
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+.hero-image {
+  min-height: 475px;
+  overflow: hidden;
+  background: #dbe3e9;
+}
+
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Cleaner crop: full van stays visible instead of appearing overly zoomed */
+  object-position: 52% center;
+  transform: scale(1.001);
+}
+
+.benefits {
+  min-height: 123px;
+}
+
+@media (min-width: 1250px) {
+  .nav {
+    gap: 34px;
+  }
+}
+
+@media (max-width: 1120px) {
+  .header {
+    grid-template-columns: 300px 1fr;
+  }
+
+  .logo-wrap {
+    padding-left: 24px;
+  }
+
+  .logo-wrap img {
+    width: 225px;
+  }
+
+  .header-right {
+    padding-left: 55px;
+  }
+}
+
+@media (max-width: 850px) {
+  .header {
+    height: 82px;
+    display: flex;
+    background: #fff;
+  }
+
+  .logo-wrap {
+    height: 82px;
+    width: 235px;
+    padding: 5px 15px;
+  }
+
+  .logo-wrap::after {
+    display: none;
+  }
+
+  .logo-wrap img {
+    width: 205px;
+    max-height: 74px;
+  }
+
+  .header-right {
+    background: var(--navy);
+    color: #fff;
+  }
+
+  .header-right .nav a {
+    color: #fff;
+  }
+
+  .header-right .lang-button {
+    color: rgba(255,255,255,.55);
+  }
+
+  .header-right .lang-button.active {
+    color: var(--lime);
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-copy {
+    padding: 65px 24px 52px;
+  }
+
+  .hero-copy::after {
+    display: none;
+  }
+
+  .hero-image {
+    min-height: 360px;
+  }
+
+  .hero-image img {
+    object-position: 55% center;
+  }
+}
+
+
+/* ============================================================
+   V3 RESPONSIVE / REACTIVE LAYOUT IMPROVEMENTS
+   ============================================================ */
+
+:root {
+  --page-pad: clamp(18px, 4vw, 64px);
+}
+
+/* Prevent horizontal overflow from angled shapes and wide content */
+html, body {
+  overflow-x: hidden;
+}
+
+body {
+  min-width: 0;
+}
+
+.header,
+.hero,
+.benefits,
+.fleet-section,
+.about-section,
+.contact-section,
+.footer {
+  width: 100%;
+}
+
+/* Desktop header scales more fluidly */
+.header {
+  grid-template-columns: minmax(250px, 31vw) 1fr;
+}
+
+.logo-wrap {
+  padding-left: var(--page-pad);
+}
+
+.logo-wrap img {
+  width: clamp(190px, 19vw, 265px);
+}
+
+.header-right {
+  min-width: 0;
+  gap: clamp(12px, 1.7vw, 26px);
+  padding-right: var(--page-pad);
+  padding-left: clamp(42px, 6vw, 82px);
+}
+
+.nav {
+  gap: clamp(14px, 2vw, 34px);
+  min-width: 0;
+}
+
+.nav a {
+  white-space: nowrap;
+  font-size: clamp(10px, .85vw, 13px);
+}
+
+.quote-button {
+  white-space: nowrap;
+  flex: 0 0 auto;
+}
+
+/* Hero scales instead of locking to one desktop ratio */
+.hero {
+  grid-template-columns: minmax(430px, 42%) minmax(0, 1fr);
+  min-height: clamp(470px, 58vw, 640px);
+}
+
+.hero-copy {
+  padding-left: var(--page-pad);
+  padding-right: clamp(30px, 4vw, 58px);
+  padding-top: clamp(56px, 6vw, 82px);
+  padding-bottom: clamp(42px, 5vw, 64px);
+}
+
+.hero h1 {
+  font-size: clamp(42px, 4.7vw, 72px);
+  max-width: 640px;
+}
+
+.hero-description {
+  font-size: clamp(15px, 1.2vw, 18px);
+}
+
+.hero-image {
+  min-height: inherit;
+}
+
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+/* Benefits remain legible on medium desktops */
+.benefits {
+  padding-left: var(--page-pad);
+  padding-right: var(--page-pad);
+}
+
+.benefits article {
+  padding-left: clamp(12px, 2vw, 30px);
+  padding-right: clamp(12px, 2vw, 30px);
+  grid-template-columns: clamp(42px, 4vw, 58px) 1fr;
+}
+
+.benefits h3 {
+  font-size: clamp(12px, 1vw, 15px);
+}
+
+.benefits p {
+  font-size: clamp(11px, .9vw, 13px);
+}
+
+/* Fleet cards become more fluid before tablet breakpoint */
+.fleet-section {
+  padding-left: var(--page-pad);
+  padding-right: var(--page-pad);
+}
+
+.fleet-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.fleet-card {
+  min-width: 0;
+  grid-template-columns: minmax(0, 1.1fr) minmax(120px, .9fr);
+}
+
+.fleet-card-copy {
+  min-width: 0;
+}
+
+.fleet-card li {
+  white-space: normal;
+  line-height: 1.35;
+}
+
+.fleet-card img {
+  min-width: 0;
+}
+
+/* Content sections */
+.about-section,
+.contact-section {
+  padding-left: var(--page-pad);
+  padding-right: var(--page-pad);
+}
+
+.footer {
+  padding-left: var(--page-pad);
+  padding-right: var(--page-pad);
+}
+
+/* Large tablet / small laptop */
+@media (max-width: 1180px) {
+  .header {
+    grid-template-columns: 250px 1fr;
+  }
+
+  .logo-wrap::after {
+    right: -70px;
+    width: 130px;
+  }
+
+  .header-right {
+    padding-left: 48px;
+  }
+
+  .nav {
+    gap: 15px;
+  }
+
+  .language-toggle {
+    display: none;
+  }
+
+  .hero {
+    grid-template-columns: 46% 54%;
+  }
+
+  .hero h1 {
+    font-size: clamp(40px, 5vw, 58px);
+  }
+
+  .benefits {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .benefits article {
+    border-bottom: 1px solid rgba(255,255,255,.16);
+  }
+
+  .benefits article:nth-child(2) {
+    border-right: 0;
+  }
+
+  .fleet-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .fleet-card:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .fleet-card:last-child {
+    max-width: calc(50% - 12px);
+    width: 100%;
+    justify-self: center;
+  }
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .header {
+    height: 82px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fff;
+  }
+
+  .logo-wrap {
+    height: 82px;
+    width: auto;
+    padding: 6px 16px 6px 18px;
+    flex: 1 1 auto;
+  }
+
+  .logo-wrap::after {
+    display: none;
+  }
+
+  .logo-wrap img {
+    width: clamp(175px, 44vw, 220px);
+    max-height: 72px;
+  }
+
+  .mobile-menu-button {
+    display: block;
+    margin-right: 14px;
+    color: var(--navy);
+    flex: 0 0 auto;
+  }
+
+  .header-right {
+    display: none;
+    position: absolute;
+    top: 82px;
+    left: 14px;
+    right: 14px;
+    background: var(--navy);
+    color: #fff;
+    padding: 24px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 20px;
+    box-shadow: 0 24px 60px rgba(0,0,0,.22);
+    border-radius: 0 0 10px 10px;
+  }
+
+  .header-right.open {
+    display: flex;
+  }
+
+  .nav {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  .nav a {
+    color: #fff;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255,255,255,.12);
+    font-size: 13px;
+  }
+
+  .nav a::after {
+    display: none;
+  }
+
+  .language-toggle {
+    display: flex;
+    justify-content: center;
+  }
+
+  .header-right .lang-button {
+    color: rgba(255,255,255,.5);
+  }
+
+  .header-right .lang-button.active {
+    color: var(--lime);
+  }
+
+  .quote-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+
+  .hero-copy {
+    order: 1;
+    padding: 54px var(--page-pad) 48px;
+  }
+
+  .hero-copy::after {
+    display: none;
+  }
+
+  .hero-image {
+    order: 2;
+    min-height: 420px;
+    height: 52vw;
+    max-height: 560px;
+  }
+
+  .hero-image img {
+    object-position: 54% center;
+  }
+
+  .hero h1 {
+    font-size: clamp(42px, 10vw, 68px);
+  }
+
+  .hero-description {
+    max-width: 640px;
+  }
+
+  .benefits {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .fleet-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .fleet-card,
+  .fleet-card:last-child {
+    grid-column: auto;
+    max-width: none;
+    width: 100%;
+    grid-template-columns: minmax(0, 1.15fr) minmax(180px, .85fr);
+  }
+
+  .fleet-card img {
+    height: 100%;
+    min-height: 230px;
+    padding: 20px;
+  }
+
+  .about-section,
+  .contact-section {
+    grid-template-columns: 1fr;
+    gap: 42px;
+  }
+
+  .about-art {
+    min-height: 380px;
+  }
+
+  .footer {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+  }
+}
+
+/* Mobile */
+@media (max-width: 620px) {
+  :root {
+    --page-pad: 18px;
+  }
+
+  .hero-copy {
+    padding-top: 46px;
+    padding-bottom: 42px;
+  }
+
+  .hero h1 {
+    font-size: clamp(38px, 12vw, 52px);
+    line-height: 1.02;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 18px;
+  }
+
+  .primary-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .secondary-link {
+    justify-content: center;
+  }
+
+  .hero-image {
+    min-height: 300px;
+    height: 72vw;
+    max-height: 390px;
+  }
+
+  .hero-image img {
+    object-position: 58% center;
+  }
+
+  .benefits {
+    grid-template-columns: 1fr;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .benefits article,
+  .benefits article:first-child {
+    padding: 22px 0;
+    border-right: 0;
+    border-bottom: 1px solid rgba(255,255,255,.15);
+  }
+
+  .benefits article:last-child {
+    border-bottom: 0;
+  }
+
+  .section-heading h2 {
+    font-size: 28px;
+  }
+
+  .section-heading p {
+    padding: 0 14px;
+  }
+
+  .fleet-section {
+    padding-top: 46px;
+    padding-bottom: 54px;
+  }
+
+  .fleet-card,
+  .fleet-card:last-child {
+    grid-template-columns: 1fr;
+  }
+
+  .fleet-card-copy {
+    padding: 22px 20px 6px;
+  }
+
+  .fleet-card img {
+    width: 100%;
+    height: 205px;
+    min-height: 0;
+    padding: 4px 18px 18px;
+  }
+
+  .about-section,
+  .contact-section {
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+
+  .about-art {
+    min-height: 300px;
+  }
+
+  .route-arrow {
+    font-size: 92px;
+  }
+
+  .about-art span,
+  .about-art strong {
+    bottom: 28px;
+    font-size: 11px;
+  }
+
+  .about-art span {
+    left: 24px;
+  }
+
+  .about-art strong {
+    right: 24px;
+  }
+
+  .about-copy h2,
+  .contact-section h2 {
+    font-size: clamp(34px, 10vw, 46px);
+  }
+
+  .contact-card {
+    padding: 22px 18px;
+  }
+
+  .contact-card > div {
+    grid-template-columns: 1fr;
+    gap: 5px;
+  }
+
+  .footer-logo {
+    width: 175px;
+  }
+
+  .footer p {
+    font-size: 10px;
+    line-height: 1.6;
+  }
+
+  .modal-card {
+    width: calc(100vw - 28px);
+    padding: 30px 20px;
+  }
+}
+
+/* Very small phones */
+@media (max-width: 390px) {
+  .logo-wrap img {
+    width: 165px;
+  }
+
+  .hero h1 {
+    font-size: 38px;
+  }
+
+  .hero-description {
+    font-size: 15px;
+  }
+
+  .benefits article {
+    grid-template-columns: 46px 1fr;
+  }
+
+  .benefit-icon {
+    width: 42px;
+    height: 42px;
+    font-size: 20px;
+  }
+
+  .fleet-card h3 {
+    font-size: 16px;
+  }
+}
+
+
+/* ============================================================
+   V4 MOBILE-FIRST POLISH
+   ============================================================ */
+
+@media (max-width: 900px) {
+  body {
+    background: #fff;
+  }
+
+  /* Sticky mobile header */
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 90;
+    height: 76px;
+    background: rgba(255,255,255,.97);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(15,43,85,.08);
+  }
+
+  .logo-wrap {
+    height: 76px;
+    padding: 6px 14px 6px 16px;
+  }
+
+  .logo-wrap img {
+    width: min(190px, 52vw);
+    max-height: 66px;
+  }
+
+  .mobile-menu-button {
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    margin-right: 8px;
+    padding: 0;
+    border-radius: 50%;
+    color: var(--navy);
+    cursor: pointer;
+  }
+
+  .mobile-menu-button span {
+    width: 24px;
+    transition: transform .2s ease, opacity .2s ease;
+  }
+
+  .mobile-menu-button[aria-expanded="true"] span:first-child {
+    transform: translateY(4px) rotate(45deg);
+  }
+
+  .mobile-menu-button[aria-expanded="true"] span:last-child {
+    transform: translateY(-4px) rotate(-45deg);
+  }
+
+  .header-right {
+    position: fixed;
+    top: 76px;
+    left: 0;
+    right: 0;
+    bottom: auto;
+    border-radius: 0 0 18px 18px;
+    padding: 8px 18px 22px;
+    box-shadow: 0 24px 70px rgba(7,20,40,.28);
+    max-height: calc(100vh - 76px);
+    overflow-y: auto;
+  }
+
+  .nav a {
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+  }
+
+  .language-toggle {
+    min-height: 44px;
+    gap: 10px;
+  }
+
+  .lang-button {
+    min-width: 44px;
+    min-height: 44px;
+    font-size: 13px;
+  }
+
+  .quote-button {
+    min-height: 52px;
+    font-size: 13px;
+  }
+
+  /* Mobile hero should read in one glance */
+  .hero {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+  }
+
+  .hero-copy {
+    order: 1;
+    padding: 40px 18px 34px;
+  }
+
+  .hero .kicker {
+    margin-bottom: 14px;
+    font-size: 10px;
+    line-height: 1.4;
+  }
+
+  .hero h1 {
+    font-size: clamp(40px, 12.5vw, 62px);
+    line-height: .96;
+    letter-spacing: -.055em;
+  }
+
+  .short-line {
+    margin: 22px 0 18px;
+    width: 48px;
+  }
+
+  .hero-description {
+    font-size: 16px;
+    line-height: 1.55;
+    margin-bottom: 22px;
+  }
+
+  .hero-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .primary-button,
+  .secondary-link {
+    min-height: 52px;
+    border-radius: 8px;
+  }
+
+  .primary-button {
+    width: 100%;
+    justify-content: center;
+    font-size: 13px;
+  }
+
+  .secondary-link {
+    width: 100%;
+    justify-content: center;
+    border: 1px solid rgba(15,43,85,.16);
+    padding: 0 16px;
+    background: #fff;
+  }
+
+  /* Keep van visible; don't crop aggressively */
+  .hero-image {
+    order: 2;
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    max-height: none;
+    aspect-ratio: 16 / 10;
+  }
+
+  .hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 56% center;
+  }
+
+  /* Benefit cards become compact mobile rows */
+  .benefits {
+    display: block;
+    padding: 0 18px;
+  }
+
+  .benefits article,
+  .benefits article:first-child {
+    min-height: 96px;
+    padding: 20px 0;
+    grid-template-columns: 48px 1fr;
+    gap: 14px;
+  }
+
+  .benefit-icon {
+    width: 44px;
+    height: 44px;
+    border-width: 2px;
+    font-size: 19px;
+  }
+
+  .benefits h3 {
+    font-size: 13px;
+    margin-bottom: 3px;
+  }
+
+  .benefits p {
+    font-size: 13px;
+    line-height: 1.45;
+  }
+
+  /* Fleet cards feel like product cards on mobile */
+  .fleet-section {
+    padding: 44px 16px 54px;
+  }
+
+  .section-heading {
+    margin-bottom: 26px;
+  }
+
+  .section-heading h2 {
+    font-size: 27px;
+  }
+
+  .section-heading p {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .fleet-grid {
+    gap: 16px;
+  }
+
+  .fleet-card,
+  .fleet-card:last-child {
+    display: flex;
+    flex-direction: column;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 6px 22px rgba(15,43,85,.08);
+  }
+
+  .fleet-card-copy {
+    order: 2;
+    padding: 18px 18px 20px;
+  }
+
+  .fleet-card img {
+    order: 1;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: contain;
+    padding: 14px 18px 0;
+    background: #fff;
+  }
+
+  .fleet-card h3 {
+    font-size: 18px;
+  }
+
+  .fleet-card li {
+    font-size: 13px;
+    margin-bottom: 9px;
+  }
+
+  /* About section */
+  .about-section {
+    padding: 58px 18px;
+  }
+
+  .about-art {
+    min-height: 260px;
+    border-radius: 14px;
+  }
+
+  .about-copy h2,
+  .contact-section h2 {
+    font-size: clamp(34px, 10vw, 45px);
+    line-height: 1.02;
+  }
+
+  .about-copy > p:not(.kicker),
+  .contact-section > div:first-child > p:not(.kicker) {
+    font-size: 16px;
+    line-height: 1.65;
+  }
+
+  /* Contact becomes a clear action card */
+  .contact-section {
+    padding: 58px 18px;
+  }
+
+  .contact-card {
+    border-radius: 14px;
+    padding: 20px 18px;
+    box-shadow: 0 5px 20px rgba(15,43,85,.06);
+  }
+
+  .contact-card > div {
+    padding: 13px 0;
+  }
+
+  .contact-card .primary-button {
+    margin-top: 20px;
+  }
+
+  /* Footer */
+  .footer {
+    padding: 30px 18px 28px;
+  }
+
+  .footer-logo {
+    width: 165px;
+  }
+
+  .footer p {
+    max-width: 280px;
+    font-size: 10px;
+    line-height: 1.7;
+  }
+
+  /* Modal fits phone screens */
+  .modal-card {
+    width: calc(100vw - 24px);
+    max-height: calc(100vh - 24px);
+    overflow-y: auto;
+    border-radius: 14px;
+    padding: 28px 18px;
+  }
+
+  .modal-card h2 {
+    font-size: 29px;
+  }
+
+  .cf-turnstile {
+    max-width: 100%;
+    overflow: hidden;
+  }
+}
+
+/* Small phones */
+@media (max-width: 430px) {
+  .header {
+    height: 72px;
+  }
+
+  .logo-wrap {
+    height: 72px;
+  }
+
+  .logo-wrap img {
+    width: 166px;
+  }
+
+  .mobile-menu-button {
+    width: 44px;
+    height: 44px;
+  }
+
+  .header-right {
+    top: 72px;
+    max-height: calc(100vh - 72px);
+  }
+
+  .hero-copy {
+    padding: 34px 16px 30px;
+  }
+
+  .hero h1 {
+    font-size: clamp(36px, 12vw, 48px);
+  }
+
+  .hero-description {
+    font-size: 15px;
+  }
+
+  .hero-image {
+    aspect-ratio: 4 / 3;
+  }
+
+  .hero-image img {
+    object-position: 60% center;
+  }
+
+  .benefits {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .fleet-section,
+  .about-section,
+  .contact-section {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .fleet-card img {
+    aspect-ratio: 3 / 2;
+  }
+
+  .about-art {
+    min-height: 230px;
+  }
+
+  .route-arrow {
+    font-size: 78px;
+  }
+
+  .contact-card {
+    padding: 18px 15px;
+  }
+}
+
+/* Extra-small devices */
+@media (max-width: 350px) {
+  .logo-wrap img {
+    width: 150px;
+  }
+
+  .hero h1 {
+    font-size: 34px;
+  }
+
+  .hero-copy {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .benefits,
+  .fleet-section,
+  .about-section,
+  .contact-section,
+  .footer {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+}
+
+
+@media (max-width: 900px) {
+  body.mobile-nav-open {
+    overflow: hidden;
+  }
+}
+
+
+/* ============================================================
+   V5 MOBILE MENU CLEANUP
+   ============================================================ */
+
+@media (max-width: 900px) {
+  .header {
+    overflow: visible;
+  }
+
+  .header-right {
+    position: fixed;
+    top: 76px;
+    left: 12px;
+    right: 12px;
+    bottom: auto;
+
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+
+    padding: 10px 16px 16px;
+    gap: 10px;
+
+    background: rgba(15, 43, 85, .985);
+    border-radius: 0 0 16px 16px;
+    box-shadow: 0 18px 45px rgba(7, 20, 40, .26);
+
+    max-height: none;
+    overflow: visible;
+  }
+
+  .header-right.open {
+    display: flex;
+  }
+
+  .nav {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  .nav a {
+    min-height: 0;
+    padding: 12px 8px;
+    justify-content: flex-start;
+
+    font-size: 13px;
+    line-height: 1.2;
+    text-align: left;
+
+    border-bottom: 1px solid rgba(255,255,255,.10);
+  }
+
+  .nav a:last-child {
+    border-bottom: 0;
+  }
+
+  .language-toggle {
+    min-height: 0;
+    padding: 7px 4px 2px;
+    justify-content: flex-start;
+    gap: 7px;
+  }
+
+  .lang-button {
+    min-width: 34px;
+    min-height: 34px;
+    padding: 0;
+
+    font-size: 12px;
+  }
+
+  .quote-button {
+    min-height: 46px;
+    margin-top: 4px;
+    padding: 11px 14px;
+    justify-content: center;
+
+    border-radius: 8px;
+    font-size: 12px;
+  }
+
+  .quote-button .whatsapp-icon {
+    width: 22px;
+    height: 22px;
+  }
+
+  /* Add subtle page dimming instead of a giant menu block */
+  body.mobile-nav-open::before {
+    content: "";
+    position: fixed;
+    inset: 76px 0 0;
+    z-index: 70;
+    background: rgba(15, 43, 85, .16);
+    backdrop-filter: blur(1px);
+    pointer-events: none;
+  }
+
+  .header {
+    z-index: 100;
+  }
+
+  .header-right {
+    z-index: 101;
+  }
+
+  /* Hero begins cleanly below sticky header */
+  .hero-copy {
+    padding-top: 36px;
+  }
+}
+
+@media (max-width: 430px) {
+  .header-right {
+    top: 72px;
+    left: 10px;
+    right: 10px;
+    padding: 8px 14px 14px;
+  }
+
+  body.mobile-nav-open::before {
+    inset: 72px 0 0;
+  }
+
+  .nav a {
+    padding: 11px 6px;
+    font-size: 12.5px;
+  }
+
+  .quote-button {
+    min-height: 44px;
+  }
+
+  .hero-copy {
+    padding-top: 30px;
+  }
+}
+
+
+/* ============================================================
+   V6 MODERN MOBILE HEADER
+   Compact sticky bar + floating dropdown menu
+   ============================================================ */
+
+@media (max-width: 900px) {
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 12px 0 14px;
+    background: rgba(255,255,255,.96);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(15,43,85,.08);
+    box-shadow: 0 2px 14px rgba(15,43,85,.05);
+    overflow: visible;
+  }
+
+  .logo-wrap {
+    flex: 0 1 auto;
+    width: auto;
+    height: 68px;
+    padding: 5px 0;
+    background: transparent;
+  }
+
+  .logo-wrap::after {
+    display: none !important;
+  }
+
+  .logo-wrap img {
+    width: clamp(145px, 43vw, 182px);
+    max-height: 58px;
+    object-fit: contain;
+  }
+
+  .mobile-menu-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+
+    width: 44px;
+    height: 44px;
+    margin: 0;
+    padding: 0;
+
+    border: 1px solid rgba(15,43,85,.12);
+    border-radius: 12px;
+    background: rgba(255,255,255,.92);
+    color: var(--navy);
+    box-shadow: 0 2px 9px rgba(15,43,85,.05);
+  }
+
+  .mobile-menu-button span {
+    display: block;
+    width: 20px;
+    height: 2px;
+    margin: 0;
+    border-radius: 2px;
+    background: currentColor;
+    transition: transform .2s ease, opacity .2s ease;
+  }
+
+  .mobile-menu-button[aria-expanded="true"] span:first-child {
+    transform: translateY(3.5px) rotate(45deg);
+  }
+
+  .mobile-menu-button[aria-expanded="true"] span:last-child {
+    transform: translateY(-3.5px) rotate(-45deg);
+  }
+
+  /* Floating dropdown rather than full-width takeover */
+  .header-right {
+    display: none;
+    position: fixed;
+    top: 76px;
+    right: 12px;
+    left: auto;
+    width: min(310px, calc(100vw - 24px));
+    max-height: calc(100vh - 92px);
+    overflow-y: auto;
+
+    padding: 10px;
+    gap: 10px;
+
+    background: rgba(15,43,85,.985);
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 16px;
+    box-shadow: 0 18px 50px rgba(7,20,40,.28);
+  }
+
+  .header-right.open {
+    display: flex;
+  }
+
+  .nav {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .nav a {
+    min-height: 42px;
+    padding: 0 12px;
+    display: flex;
+    align-items: center;
+
+    color: white !important;
+    border: 0;
+    border-radius: 9px;
+
+    font-size: 12.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .02em;
+    transition: background .15s ease;
+  }
+
+  .nav a:hover,
+  .nav a:focus-visible {
+    background: rgba(255,255,255,.08);
+  }
+
+  .nav a::after {
+    display: none !important;
+  }
+
+  .language-toggle {
+    min-height: 40px;
+    margin-top: 2px;
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 5px;
+
+    border-top: 1px solid rgba(255,255,255,.1);
+    color: rgba(255,255,255,.45);
+  }
+
+  .lang-button {
+    min-width: 34px;
+    min-height: 32px;
+    padding: 0 4px;
+    color: rgba(255,255,255,.55);
+    font-size: 12px;
+  }
+
+  .lang-button.active {
+    color: var(--lime);
+  }
+
+  .quote-button {
+    width: 100%;
+    min-height: 46px;
+    margin: 0;
+    padding: 11px 14px;
+    display: flex;
+    justify-content: center;
+    gap: 9px;
+
+    border: 1px solid var(--lime);
+    border-radius: 10px;
+    background: transparent;
+    color: var(--lime);
+
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  .quote-button .whatsapp-icon {
+    width: 21px;
+    height: 21px;
+  }
+
+  /* Very subtle page dim only */
+  body.mobile-nav-open::before {
+    content: "";
+    position: fixed;
+    inset: 68px 0 0;
+    z-index: 900;
+    background: rgba(8,22,43,.12);
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(1px);
+    pointer-events: none;
+  }
+
+  .header-right {
+    z-index: 1100;
+  }
+
+  /* Remove older menu spacing side effects */
+  .hero-copy {
+    padding-top: 34px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    height: 64px;
+    padding-left: 12px;
+    padding-right: 10px;
+  }
+
+  .logo-wrap {
+    height: 64px;
+  }
+
+  .logo-wrap img {
+    width: clamp(140px, 48vw, 170px);
+    max-height: 54px;
+  }
+
+  .mobile-menu-button {
+    width: 42px;
+    height: 42px;
+    border-radius: 11px;
+  }
+
+  .header-right {
+    top: 71px;
+    right: 10px;
+    width: min(290px, calc(100vw - 20px));
+  }
+
+  body.mobile-nav-open::before {
+    inset: 64px 0 0;
+  }
+}
+
+@media (max-width: 360px) {
+  .logo-wrap img {
+    width: 138px;
+  }
+
+  .header-right {
+    width: calc(100vw - 16px);
+    right: 8px;
+  }
+}
+
+
+/* ============================================================
+   V7 STABLE HERO IMAGE
+   Preserve full van composition across zoom/window changes
+   ============================================================ */
+
+/* Desktop / laptop:
+   Do not crop the approved hero artwork. Keep the full composition visible. */
+@media (min-width: 901px) {
+  .hero {
+    align-items: stretch;
+    min-height: 0;
+  }
+
+  .hero-image {
+    min-height: 0 !important;
+    height: auto !important;
+    max-height: none !important;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+    background: #ffffff;
+  }
+
+  .hero-image img {
+    display: block;
+    width: 100%;
+    height: auto !important;
+    min-height: 0;
+    max-height: none;
+
+    object-fit: contain !important;
+    object-position: 50% 50% !important;
+
+    transform: none !important;
+  }
+
+  /* Let the text side adapt to the image instead of forcing
+     the image into a fixed-height crop. */
+  .hero-copy {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+/* Wide screens: preserve the same visual center rather than zooming */
+@media (min-width: 1400px) {
+  .hero-image img {
+    width: 100%;
+    height: auto !important;
+    object-fit: contain !important;
+    object-position: center !important;
+  }
+}
+
+/* Medium desktop/laptop widths */
+@media (min-width: 901px) and (max-width: 1250px) {
+  .hero {
+    grid-template-columns: minmax(410px, 43%) minmax(0, 57%);
+  }
+
+  .hero-image {
+    padding: 0;
+  }
+
+  .hero-image img {
+    width: 100%;
+    height: auto !important;
+    object-fit: contain !important;
+    object-position: center !important;
+  }
+}
+
+/* Mobile keeps its dedicated crop behavior from previous versions,
+   but avoid zooming the source more than necessary. */
+@media (max-width: 900px) {
+  .hero-image {
+    overflow: hidden;
+    background: #dbe3e9;
+  }
+
+  .hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 56% center;
+    transform: none !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-image img {
+    object-position: 58% center;
+  }
+}
+
+
+/* ============================================================
+   V8 DESKTOP HEADER — RETURN TO NAVY RIGHT-SIDE NAVIGATION
+   ============================================================ */
+
+@media (min-width: 901px) {
+  .header {
+    height: 96px;
+    display: grid;
+    grid-template-columns: minmax(430px, 34%) 1fr;
+    background: var(--navy);
+  }
+
+  .logo-wrap {
+    height: 96px;
+    background: #fff;
+    padding: 6px 36px 5px max(58px, calc((100vw - var(--max))/2 + 58px));
+  }
+
+  .logo-wrap::after {
+    display: block !important;
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -92px;
+    width: 170px;
+    height: 96px;
+    background: #fff;
+    transform: skewX(39deg);
+    transform-origin: top;
+    z-index: 0;
+  }
+
+  .header-right {
+    height: 96px;
+    background: var(--navy);
+    color: #fff;
+    padding-left: clamp(88px, 8vw, 130px);
+  }
+
+  .nav a {
+    color: #fff;
+  }
+
+  .lang-button {
+    color: rgba(255,255,255,.48);
+  }
+
+  .lang-button.active {
+    color: var(--lime);
+  }
+
+  .quote-button {
+    background: transparent;
+    border: 2px solid var(--lime);
+    color: var(--lime);
+  }
+}
+
+/* ============================================================
+   V8 DETAILED SERVICE SECTIONS
+   ============================================================ */
+
+.detailed-services {
+  padding: 100px max(50px, calc((100vw - var(--max))/2 + 50px));
+  background: #fff;
+}
+
+.detailed-services-heading {
+  max-width: 900px;
+  margin-bottom: 48px;
+}
+
+.detailed-services-heading h2,
+.commitments-copy h2 {
+  margin: 0 0 20px;
+  font-family: "Manrope", sans-serif;
+  font-size: clamp(40px, 5vw, 68px);
+  line-height: 1.02;
+  letter-spacing: -.045em;
+  color: var(--navy);
+}
+
+.detailed-services-heading > p:not(.kicker) {
+  max-width: 720px;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.service-category-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0,1fr));
+  gap: 16px;
+}
+
+.service-category-card {
+  min-height: 355px;
+  padding: 28px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fbfbfa;
+}
+
+.service-category-card-accent {
+  background: var(--navy);
+  color: #fff;
+  border-color: var(--navy);
+}
+
+.category-number {
+  display: block;
+  margin-bottom: 48px;
+  color: #b5c900;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .12em;
+}
+
+.service-category-card h3 {
+  margin: 0 0 9px;
+  color: var(--navy);
+  font-size: 22px;
+  letter-spacing: -.025em;
+}
+
+.service-category-card-accent h3 {
+  color: #fff;
+}
+
+.service-category-card > p {
+  margin: 0 0 24px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.service-category-card-accent > p {
+  color: rgba(255,255,255,.62);
+}
+
+.service-category-card ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.service-category-card li {
+  padding: 12px 0;
+  border-top: 1px solid rgba(15,43,85,.11);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.service-category-card-accent li {
+  border-color: rgba(255,255,255,.12);
+  color: rgba(255,255,255,.85);
+}
+
+.service-category-card li::before {
+  content: "→";
+  margin-right: 9px;
+  color: #b5c900;
+}
+
+.commitments-section {
+  display: grid;
+  grid-template-columns: .9fr 1.1fr;
+  gap: 90px;
+  padding: 95px max(60px, calc((100vw - var(--max))/2 + 60px));
+  background: var(--navy);
+  color: #fff;
+}
+
+.commitments-copy h2 {
+  color: #fff;
+}
+
+.commitments-list article {
+  display: grid;
+  grid-template-columns: 45px 1fr;
+  gap: 18px;
+  padding: 27px 0;
+  border-top: 1px solid rgba(255,255,255,.15);
+}
+
+.commitments-list article > span {
+  color: var(--lime);
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.commitments-list h3 {
+  margin: 0 0 8px;
+  color: #fff;
+  font-size: 20px;
+}
+
+.commitments-list p {
+  margin: 0;
+  color: rgba(255,255,255,.7);
+  line-height: 1.65;
+}
+
+/* Quote intake */
+.quote-info-form {
+  margin-bottom: 30px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--line);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 16px;
+}
+
+.form-grid label {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.form-grid label > span {
+  color: var(--navy);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.form-full {
+  grid-column: 1 / -1;
+}
+
+.form-grid input,
+.form-grid textarea {
+  width: 100%;
+  padding: 13px 14px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: #fff;
+  color: var(--text);
+  font: inherit;
+  font-size: 14px;
+}
+
+.form-grid input:focus,
+.form-grid textarea:focus {
+  outline: 2px solid rgba(217,239,47,.8);
+  outline-offset: 1px;
+  border-color: var(--navy);
+}
+
+.quote-form-submit {
+  margin-top: 18px;
+}
+
+@media (max-width: 1180px) {
+  .service-category-grid {
+    grid-template-columns: repeat(2, minmax(0,1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .detailed-services {
+    padding: 65px 18px;
+  }
+
+  .service-category-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .service-category-card {
+    min-height: 0;
+  }
+
+  .category-number {
+    margin-bottom: 26px;
+  }
+
+  .commitments-section {
+    grid-template-columns: 1fr;
+    gap: 38px;
+    padding: 65px 18px;
+  }
+}
+
+@media (max-width: 620px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-full {
+    grid-column: auto;
+  }
+}
+
+
+/* ============================================================
+   V9 — ZOOM-SAFE DESKTOP HEADER + SMALLER HERO COPY
+   ============================================================ */
+
+/* The old desktop header reserved too much fixed space for the logo/nav.
+   This version lets the nav compress gracefully at browser zoom. */
+@media (min-width: 901px) {
+  .header {
+    grid-template-columns: clamp(330px, 30vw, 500px) minmax(0, 1fr);
+  }
+
+  .logo-wrap {
+    padding-left: clamp(34px, 4.5vw, 72px);
+    padding-right: 24px;
+  }
+
+  .logo-wrap img {
+    width: clamp(225px, 20vw, 315px);
+  }
+
+  .header-right {
+    min-width: 0;
+    padding-left: clamp(55px, 5vw, 95px);
+    padding-right: clamp(18px, 2vw, 34px);
+    gap: clamp(12px, 1.6vw, 26px);
+  }
+
+  .nav {
+    min-width: 0;
+    gap: clamp(13px, 1.55vw, 28px);
+    white-space: nowrap;
+  }
+
+  .nav a {
+    font-size: clamp(10px, .78vw, 13px);
+  }
+
+  .language-toggle {
+    flex: 0 0 auto;
+  }
+
+  .quote-button {
+    flex: 0 0 auto;
+    min-width: 0;
+    padding: 13px clamp(15px, 1.5vw, 25px);
+    font-size: clamp(10px, .8vw, 13px);
+    white-space: nowrap;
+    text-decoration: none;
+  }
+
+  /* Smaller headline so Spanish does not dominate the full viewport. */
+  .hero h1 {
+    font-size: clamp(48px, 4.5vw, 72px);
+    line-height: .98;
+    max-width: 650px;
+  }
+
+  .hero-copy {
+    padding-right: clamp(28px, 3vw, 52px);
+  }
+}
+
+/* At effective widths commonly reached around 110–125% browser zoom,
+   collapse lower-priority spacing before falling into the mobile nav. */
+@media (min-width: 901px) and (max-width: 1250px) {
+  .header {
+    grid-template-columns: 300px minmax(0, 1fr);
+  }
+
+  .logo-wrap {
+    padding-left: 26px;
+  }
+
+  .logo-wrap img {
+    width: 225px;
+  }
+
+  .header-right {
+    padding-left: 52px;
+    padding-right: 12px;
+    gap: 8px;
+  }
+
+  .nav {
+    gap: 12px;
+  }
+
+  .nav a {
+    font-size: 10px;
+  }
+
+  .quote-button {
+    padding: 11px 12px;
+    font-size: 10px;
+  }
+
+  .language-toggle {
+    gap: 2px;
+  }
+}
+
+/* If zoom makes the CSS viewport genuinely narrow, use the already-designed
+   modern mobile header instead of allowing desktop nav to clip. */
+@media (min-width: 901px) and (max-width: 1060px) {
+  .header {
+    grid-template-columns: 260px minmax(0, 1fr);
+  }
+
+  .logo-wrap img {
+    width: 205px;
+  }
+
+  .nav {
+    gap: 8px;
+  }
+
+  .header-right {
+    padding-left: 45px;
+  }
+
+  .quote-button {
+    padding-inline: 9px;
+  }
+}
+
+/* ============================================================
+   V9 CONTACT / EMAIL QUOTE
+   ============================================================ */
+.contact-section {
+  align-items: start;
+}
+
+.contact-card {
+  max-width: 720px;
+}
+
+.quote-info-form {
+  background: #fff;
+}
+
+.email-quote-submit {
+  min-height: 52px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: 0;
+  cursor: pointer;
+}
+
+.email-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 27px;
+  height: 27px;
+  border: 2px solid var(--lime);
+  border-radius: 50%;
+  color: var(--lime);
+  font-size: 16px; 
+
+}
+  
+
+/* mailto anchors styled as buttons */
+a.quote-button,
+a.primary-button {
+  text-decoration: none;
+}
+
+@media (max-width: 900px) {
+  .hero h1 {
+    font-size: clamp(36px, 10vw, 52px);
+    line-height: .98;
+  }
+
+  .contact-card {
+    max-width: none;
+    width: 100%;
+  }
+}
+
+
+/* ============================================================
+   V11 — LARGER HEADER LOGO + SMALLER HERO HEADLINE
+   ============================================================ */
+
+@media (min-width: 901px) {
+  /* Give the brand more presence in the top-left without
+     increasing the overall header height. */
+  .header {
+    grid-template-columns: clamp(390px, 32vw, 525px) minmax(0, 1fr);
+  }
+
+  .logo-wrap {
+    padding-left: clamp(38px, 4.5vw, 72px);
+    padding-right: 20px;
+    overflow: visible;
+  }
+
+  .logo-wrap img {
+    width: clamp(285px, 24vw, 370px);
+    max-width: none;
+    max-height: 88px;
+    object-fit: contain;
+  }
+
+  /* Make the hero statement more refined and leave more
+     breathing room around it. */
+  .hero h1 {
+    font-size: clamp(40px, 3.65vw, 58px);
+    line-height: 1.02;
+    letter-spacing: -.04em;
+    max-width: 560px;
+  }
+
+  .hero-copy {
+    padding-top: clamp(48px, 5vw, 68px);
+    padding-bottom: clamp(42px, 4.5vw, 60px);
+  }
+}
+
+/* Keep the larger logo from squeezing navigation at moderate
+   desktop widths / browser zoom levels. */
+@media (min-width: 901px) and (max-width: 1250px) {
+  .header {
+    grid-template-columns: 320px minmax(0, 1fr);
+  }
+
+  .logo-wrap {
+    padding-left: 24px;
+  }
+
+  .logo-wrap img {
+    width: 255px;
+  }
+
+  .hero h1 {
+    font-size: clamp(38px, 4vw, 50px);
+    max-width: 500px;
+  }
+}
+
+/* Mobile keeps the compact header logo from the modern
+   mobile navigation design. */
+@media (max-width: 900px) {
+  .hero h1 {
+    font-size: clamp(34px, 9vw, 46px);
+  }
+}
+
+
+/* ============================================================
+   V12 — BRAND POSITION + REMOVE WHATSAPP UI
+   ============================================================ */
+.whatsapp-modal,
+.whatsapp-section,
+.whatsapp-cta,
+[data-whatsapp],
+[data-open-quote] {
+  display: none !important;
+}
+
+@media (min-width: 901px) {
+  .header {
+    grid-template-columns: clamp(430px, 34vw, 560px) minmax(0, 1fr);
+  }
+
+  .logo-wrap {
+    padding-left: clamp(14px, 1.5vw, 24px);
+    padding-right: 12px;
+    justify-content: flex-start;
+  }
+
+  .logo-wrap img {
+    width: clamp(330px, 27vw, 420px);
+    max-width: none;
+    max-height: 92px;
+    object-fit: contain;
+    object-position: left center;
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1250px) {
+  .header {
+    grid-template-columns: 345px minmax(0, 1fr);
+  }
+
+  .logo-wrap {
+    padding-left: 12px;
+  }
+
+  .logo-wrap img {
+    width: 290px;
+  }
+}
+
+
+/* ============================================================
+   V13 — LOGO ~30% LARGER THAN V12
+   ============================================================ */
+
+@media (min-width: 1251px) {
+  .header {
+    grid-template-columns: clamp(500px, 39vw, 650px) minmax(0, 1fr);
+  }
+
+  .logo-wrap {
+    padding-left: clamp(8px, 1vw, 16px);
+    padding-right: 8px;
+    overflow: visible;
+  }
+
+  .logo-wrap img {
+    width: clamp(430px, 35vw, 545px);
+    max-width: none;
+    max-height: 94px;
+    object-fit: contain;
+    object-position: left center;
+  }
+
+  /* Compensate for the larger logo area while keeping nav usable. */
+  .header-right {
+    padding-left: clamp(48px, 4vw, 75px);
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1250px) {
+  .header {
+    grid-template-columns: 395px minmax(0, 1fr);
+  }
+
+  .logo-wrap {
+    padding-left: 8px;
+  }
+
+  .logo-wrap img {
+    width: 375px;
+    max-width: none;
+    object-position: left center;
+  }
+}
+
+
+/* ============================================================
+   V14 — ACTUALLY SCALE THE LOGO ART, NOT ITS WHITE CONTAINER
+   ============================================================ */
+
+/* Keep the white logo/header region compact. The logo itself is
+   enlarged vertically and allowed to extend lower into the hero. */
+@media (min-width: 1251px) {
+  .header {
+    grid-template-columns: clamp(390px, 31vw, 500px) minmax(0, 1fr);
+    overflow: visible;
+  }
+
+  .logo-wrap {
+    height: 96px;
+    padding: 0 8px 0 10px;
+    overflow: visible;
+    align-items: flex-start;
+  }
+
+  .logo-wrap::after {
+    right: -72px;
+    width: 135px;
+  }
+
+  .logo-wrap img {
+    width: 390px;
+    height: auto;
+    max-width: none;
+    max-height: none;
+    margin-top: -2px;
+    transform: scale(1.22);
+    transform-origin: left top;
+    position: relative;
+    z-index: 5;
+  }
+
+  .header-right {
+    padding-left: clamp(75px, 6vw, 105px);
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1250px) {
+  .header {
+    grid-template-columns: 330px minmax(0, 1fr);
+    overflow: visible;
+  }
+
+  .logo-wrap {
+    padding: 0 8px;
+    overflow: visible;
+    align-items: flex-start;
+  }
+
+  .logo-wrap::after {
+    right: -60px;
+    width: 120px;
+  }
+
+  .logo-wrap img {
+    width: 310px;
+    max-width: none;
+    max-height: none;
+    margin-top: 0;
+    transform: scale(1.18);
+    transform-origin: left top;
+    position: relative;
+    z-index: 5;
+  }
+}
+
+
+/* ============================================================
+   V15 — FULL RESPONSIVE SYSTEM
+   Fluid sizing + zoom-safe desktop + tablet + mobile
+   ============================================================ */
+
+:root {
+  --page-gutter: clamp(16px, 3vw, 48px);
+  --content-max: 1536px;
+}
+
+/* Global overflow safety */
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+img,
+svg,
+video,
+canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+/* -------------------------------
+   HEADER — fluid desktop
+   ------------------------------- */
+
+@media (min-width: 1101px) {
+  .header {
+    height: clamp(88px, 7vw, 104px);
+    display: grid;
+    grid-template-columns: minmax(360px, 31vw) minmax(0, 1fr);
+    align-items: stretch;
+    overflow: visible;
+  }
+
+  .logo-wrap {
+    min-width: 0;
+    height: 100%;
+    padding: 0 8px 0 clamp(8px, 1vw, 16px);
+    overflow: visible;
+    align-items: flex-start;
+  }
+
+  .logo-wrap img {
+    width: clamp(320px, 26vw, 430px);
+    max-width: none;
+    max-height: none;
+    transform: scale(1.13);
+    transform-origin: left top;
+    object-fit: contain;
+    object-position: left top;
+  }
+
+  .logo-wrap::after {
+    right: clamp(-78px, -5vw, -54px);
+    width: clamp(110px, 10vw, 155px);
+    height: 100%;
+  }
+
+  .header-right {
+    min-width: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: clamp(10px, 1.4vw, 24px);
+    padding-left: clamp(56px, 5vw, 90px);
+    padding-right: var(--page-gutter);
+  }
+
+  .nav {
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: clamp(12px, 1.4vw, 26px);
+  }
+
+  .nav a {
+    white-space: nowrap;
+    font-size: clamp(10px, .72vw, 13px);
+  }
+
+  .language-toggle {
+    flex: 0 0 auto;
+  }
+
+  .quote-button {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    font-size: clamp(10px, .76vw, 13px);
+    padding: 12px clamp(12px, 1.4vw, 22px);
+  }
+}
+
+/* Desktop zoom / smaller laptop widths */
+@media (min-width: 901px) and (max-width: 1100px) {
+  .header {
+    height: 84px;
+    display: grid;
+    grid-template-columns: 280px minmax(0, 1fr);
+  }
+
+  .logo-wrap {
+    padding-left: 8px;
+    overflow: visible;
+  }
+
+  .logo-wrap img {
+    width: 255px;
+    max-width: none;
+    transform: scale(1.08);
+    transform-origin: left top;
+  }
+
+  .logo-wrap::after {
+    right: -50px;
+    width: 105px;
+  }
+
+  .header-right {
+    min-width: 0;
+    gap: 8px;
+    padding-left: 42px;
+    padding-right: 10px;
+  }
+
+  .nav {
+    gap: 9px;
+  }
+
+  .nav a {
+    font-size: 9.5px;
+  }
+
+  .quote-button {
+    padding: 10px 10px;
+    font-size: 9.5px;
+  }
+
+  .language-toggle {
+    font-size: 10px;
+  }
+}
+
+/* -------------------------------
+   HERO — fluid composition
+   ------------------------------- */
+
+@media (min-width: 901px) {
+  .hero {
+    display: grid;
+    grid-template-columns: minmax(390px, 42%) minmax(0, 58%);
+    min-height: clamp(500px, 51vw, 680px);
+    align-items: stretch;
+  }
+
+  .hero-copy {
+    min-width: 0;
+    padding-top: clamp(82px, 7vw, 125px);
+    padding-right: clamp(26px, 3vw, 52px);
+    padding-bottom: clamp(48px, 5vw, 74px);
+    padding-left: max(
+      var(--page-gutter),
+      calc((100vw - var(--content-max))/2 + var(--page-gutter))
+    );
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .hero h1 {
+    font-size: clamp(38px, 3.55vw, 58px);
+    line-height: 1.01;
+    max-width: 560px;
+  }
+
+  .hero-description {
+    max-width: 520px;
+    font-size: clamp(15px, 1.05vw, 18px);
+  }
+
+  .hero-image {
+    min-width: 0;
+    min-height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    overflow: hidden;
+  }
+
+  .hero-image img {
+    width: 100%;
+    height: auto !important;
+    max-height: none;
+    object-fit: contain !important;
+    object-position: center !important;
+    transform: none !important;
+  }
+}
+
+/* -------------------------------
+   BENEFITS / SERVICES / FLEET
+   ------------------------------- */
+
+.benefits,
+.detailed-services,
+.fleet-section,
+.about-section,
+.contact-section,
+.footer {
+  padding-left: max(
+    var(--page-gutter),
+    calc((100vw - var(--content-max))/2 + var(--page-gutter))
+  );
+  padding-right: max(
+    var(--page-gutter),
+    calc((100vw - var(--content-max))/2 + var(--page-gutter))
+  );
+}
+
+@media (min-width: 1181px) {
+  .benefits {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .service-category-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .fleet-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1180px) {
+  .benefits {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .service-category-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .fleet-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .fleet-card:last-child {
+    grid-column: 1 / -1;
+    max-width: 600px;
+    width: 100%;
+    justify-self: center;
+  }
+
+  .commitments-section,
+  .about-section,
+  .contact-section {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+}
+
+/* -------------------------------
+   TABLET / MOBILE NAV
+   ------------------------------- */
+
+@media (max-width: 900px) {
+  .header {
+    height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 12px;
+    background: rgba(255,255,255,.98);
+    border-bottom: 1px solid rgba(15,43,85,.08);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  .logo-wrap {
+    width: auto;
+    height: 68px;
+    padding: 4px 0;
+    overflow: hidden;
+  }
+
+  .logo-wrap::after {
+    display: none !important;
+  }
+
+  .logo-wrap img {
+    width: clamp(150px, 42vw, 190px);
+    max-height: 58px;
+    transform: none !important;
+  }
+
+  .mobile-menu-button {
+    display: flex;
+    width: 44px;
+    height: 44px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+    border: 1px solid rgba(15,43,85,.12);
+    border-radius: 12px;
+    background: white;
+  }
+
+  .mobile-menu-button span {
+    width: 20px;
+    height: 2px;
+    margin: 0;
+  }
+
+  .header-right {
+    display: none;
+    position: fixed;
+    top: 76px;
+    right: 12px;
+    left: auto;
+    width: min(310px, calc(100vw - 24px));
+    max-height: calc(100vh - 92px);
+    overflow-y: auto;
+    padding: 10px;
+    gap: 10px;
+    background: rgba(15,43,85,.985);
+    border-radius: 16px;
+    box-shadow: 0 18px 50px rgba(7,20,40,.28);
+    z-index: 1100;
+  }
+
+  .header-right.open {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .nav {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+  }
+
+  .nav a {
+    color: #fff !important;
+    min-height: 42px;
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    font-size: 12.5px;
+    border-radius: 9px;
+  }
+
+  .nav a::after {
+    display: none !important;
+  }
+
+  .language-toggle {
+    justify-content: flex-start;
+    padding: 5px 10px;
+  }
+
+  .quote-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  .hero-copy {
+    order: 1;
+    padding: 42px var(--page-gutter) 34px;
+  }
+
+  .hero-copy::after {
+    display: none;
+  }
+
+  .hero h1 {
+    font-size: clamp(34px, 8vw, 48px);
+    max-width: 650px;
+  }
+
+  .hero-description {
+    max-width: 650px;
+  }
+
+  .hero-image {
+    order: 2;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    min-height: 0;
+  }
+
+  .hero-image img {
+    width: 100%;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: 56% center !important;
+  }
+
+  .benefits {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .service-category-grid,
+  .fleet-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .fleet-card,
+  .fleet-card:last-child {
+    max-width: none;
+    width: 100%;
+    grid-column: auto;
+  }
+
+  .commitments-section,
+  .about-section,
+  .contact-section {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .detailed-services,
+  .fleet-section,
+  .about-section,
+  .contact-section,
+  .commitments-section {
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+}
+
+@media (max-width: 620px) {
+  :root {
+    --page-gutter: 16px;
+  }
+
+  .hero-copy {
+    padding-top: 34px;
+  }
+
+  .hero h1 {
+    font-size: clamp(32px, 9.5vw, 42px);
+  }
+
+  .hero-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .primary-button,
+  .secondary-link {
+    width: 100%;
+    min-height: 50px;
+    justify-content: center;
+  }
+
+  .hero-image {
+    aspect-ratio: 4 / 3;
+  }
+
+  .benefits {
+    grid-template-columns: 1fr;
+  }
+
+  .benefits article {
+    border-right: 0;
+    border-bottom: 1px solid rgba(255,255,255,.15);
+  }
+
+  .service-category-card {
+    min-height: 0;
+  }
+
+  .fleet-card {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .fleet-card img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: contain;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-full {
+    grid-column: auto;
+  }
+
+  .contact-card {
+    width: 100%;
+  }
+
+  .footer {
+    grid-template-columns: 1fr;
+    text-align: center;
+    justify-items: center;
+  }
+}
+
+@media (max-width: 380px) {
+  .logo-wrap img {
+    width: 142px;
+  }
+
+  .hero h1 {
+    font-size: 31px;
+  }
+
+  .nav a {
+    font-size: 12px;
+  }
+}
+
+/* Graceful browser zoom behavior: if effective viewport narrows,
+   fall into mobile navigation before clipping. */
+@media (min-width: 901px) and (max-width: 980px) {
+  .header-right {
+    gap: 6px;
+  }
+
+  .nav {
+    gap: 7px;
+  }
+
+  .nav a {
+    font-size: 9px;
+  }
+
+  .quote-button {
+    font-size: 9px;
+    padding-inline: 8px;
+  }
+}
+
+
+/* ============================================================
+   V16 — CLEAN HEADER GEOMETRY
+   Removes legacy overlapping triangles and scales logo ~10% down
+   ============================================================ */
+
+/* Desktop / laptop */
+@media (min-width: 901px) {
+  .header {
+    position: relative;
+    display: grid;
+    grid-template-columns: clamp(340px, 31vw, 500px) minmax(0, 1fr);
+    background: var(--navy);
+    overflow: visible;
+  }
+
+  /* One clean angled white panel — no stacked pseudo-elements. */
+  .logo-wrap {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    height: 100%;
+    padding: 0 18px 0 12px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    overflow: visible;
+    background: #fff;
+    clip-path: polygon(0 0, 84% 0, 100% 100%, 0 100%);
+  }
+
+  .logo-wrap::before,
+  .logo-wrap::after {
+    content: none !important;
+    display: none !important;
+  }
+
+  /* About 10% smaller than v15's effective rendered logo size. */
+  .logo-wrap img {
+    width: clamp(325px, 26.5vw, 435px);
+    height: auto;
+    max-width: none;
+    max-height: 94px;
+    margin: 0;
+    transform: none !important;
+    transform-origin: left top;
+    object-fit: contain;
+    object-position: left top;
+    position: relative;
+    z-index: 4;
+  }
+
+  .header-right {
+    position: relative;
+    z-index: 2;
+    min-width: 0;
+    height: 100%;
+    padding-left: clamp(54px, 5vw, 88px);
+    background: var(--navy);
+  }
+}
+
+/* Moderate desktop / zoomed browser widths */
+@media (min-width: 901px) and (max-width: 1100px) {
+  .header {
+    grid-template-columns: 285px minmax(0, 1fr);
+  }
+
+  .logo-wrap {
+    padding-left: 8px;
+    clip-path: polygon(0 0, 82% 0, 100% 100%, 0 100%);
+  }
+
+  .logo-wrap img {
+    width: 250px;
+    max-height: 80px;
+  }
+
+  .header-right {
+    padding-left: 40px;
+  }
+}
+
+/* Mobile: remove clipping entirely and keep existing compact header. */
+@media (max-width: 900px) {
+  .logo-wrap {
+    clip-path: none !important;
+    background: transparent;
+  }
+
+  .logo-wrap::before,
+  .logo-wrap::after {
+    display: none !important;
+    content: none !important;
+  }
+
+  .logo-wrap img {
+    transform: none !important;
+  }
+}
+
+
+/* ============================================================
+   V17 — EMAIL QUOTE CTA + MODAL
+   ============================================================ */
+.header-quote-trigger,
+.hero-quote-trigger {
+  text-decoration: none;
+}
+
+.quote-dot {
+  color: var(--lime);
+  font-size: 22px;
+  line-height: 1;
+}
+
+.quote-es {
+  display: none;
+}
+
+html[lang="es"] .quote-en {
+  display: none !important;
+}
+
+html[lang="es"] .quote-es {
+  display: inline;
+}
+
+.email-quote-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(14px, 3vw, 32px);
+}
+
+.email-quote-modal.is-open {
+  display: flex;
+}
+
+.email-quote-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(5, 22, 49, .72);
+  backdrop-filter: blur(5px);
+}
+
+.email-quote-dialog {
+  position: relative;
+  z-index: 1;
+  width: min(760px, 100%);
+  max-height: min(860px, calc(100vh - 32px));
+  overflow-y: auto;
+  background: #fff;
+  border-radius: 18px;
+  padding: clamp(26px, 4vw, 46px);
+  box-shadow: 0 28px 80px rgba(0, 22, 55, .28);
+}
+
+.email-quote-close {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 50%;
+  background: #f3f6fa;
+  color: var(--navy);
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.email-quote-heading {
+  padding-right: 42px;
+  margin-bottom: 26px;
+}
+
+.email-quote-heading .eyebrow {
+  color: var(--white);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .18em;
+}
+
+.email-quote-heading h2 {
+  margin: 7px 0 8px;
+  color: var(--navy);
+  font-size: clamp(30px, 4vw, 44px);
+  line-height: 1;
+}
+
+.email-quote-heading p {
+  margin: 0;
+  max-width: 560px;
+  color: #465267;
+}
+
+.quote-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.quote-form-grid label {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  color: var(--navy);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .03em;
+}
+
+.quote-form-full {
+  grid-column: 1 / -1;
+}
+
+.quote-form-grid input,
+.quote-form-grid textarea {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #ccd4df;
+  border-radius: 8px;
+  background: #fff;
+  color: #17243a;
+  font: inherit;
+  font-weight: 400;
+  letter-spacing: 0;
+  padding: 13px 14px;
+  outline: none;
+}
+
+.quote-form-grid input:focus,
+.quote-form-grid textarea:focus {
+  border-color: var(--navy);
+  box-shadow: 0 0 0 3px rgba(16, 48, 91, .08);
+}
+
+.quote-form-grid textarea {
+  resize: vertical;
+  min-height: 125px;
+}
+
+.email-quote-actions {
+  margin-top: 22px;
+}
+
+.email-quote-send {
+  border: 0;
+  cursor: pointer;
+}
+
+.email-symbol {
+  color: var(--lime);
+  font-size: 18px;
+}
+
+.email-quote-note {
+  margin: 10px 0 0;
+  color: #6a7382;
+  font-size: 12px;
+}
+
+body.email-quote-open {
+  overflow: hidden;
+}
+
+@media (max-width: 900px) {
+  .header-quote-trigger {
+    width: 100%;
+    display: flex;
+    margin-top: 4px;
+  }
+}
+
+@media (max-width: 620px) {
+  .email-quote-modal {
+    padding: 8px;
+    align-items: flex-end;
+  }
+
+  .email-quote-dialog {
+    width: 100%;
+    max-height: calc(100vh - 16px);
+    border-radius: 18px 18px 10px 10px;
+    padding: 28px 18px 22px;
+  }
+
+  .quote-form-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .quote-form-full {
+    grid-column: auto;
+  }
+
+  .email-quote-send {
+    width: 100%;
+  }
+}
+
+
+/* ============================================================
+   V18 — SLIGHTLY LARGER LOGO
+   ============================================================ */
+@media (min-width: 1101px) {
+  .logo-wrap img {
+    width: clamp(345px, 28vw, 460px);
+    max-height: 100px;
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1100px) {
+  .logo-wrap img {
+    width: 265px;
+    max-height: 84px;
+  }
+}
+
+@media (max-width: 900px) {
+  .logo-wrap img {
+    width: clamp(158px, 44vw, 198px);
+  }
+}
+
+
+/* ============================================================
+   V19 — MUCH LARGER R&CH LOGO
+   Scale the artwork itself and let it extend downward.
+   ============================================================ */
+
+@media (min-width: 1101px) {
+  .header {
+    grid-template-columns: clamp(390px, 32vw, 510px) minmax(0, 1fr);
+    overflow: visible;
+  }
+
+  .logo-wrap {
+    overflow: visible;
+    z-index: 10;
+  }
+
+  .logo-wrap img {
+    width: clamp(410px, 33vw, 535px);
+    max-width: none;
+    max-height: none;
+    height: auto;
+    position: relative;
+    z-index: 11;
+    transform: none !important;
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1100px) {
+  .logo-wrap {
+    overflow: visible;
+  }
+
+  .logo-wrap img {
+    width: 325px;
+    max-width: none;
+    max-height: none;
+    height: auto;
+  }
+}
+
+@media (max-width: 900px) {
+  .logo-wrap img {
+    width: clamp(175px, 48vw, 220px);
+    max-height: 62px;
+  }
+}
+
+
+/* ============================================================
+   V20 — LARGE LOGO WITHOUT WHITE SVG OVERLAP
+   Keep v19 logo size; make only the artwork overflow.
+   ============================================================ */
+@media (min-width: 901px) {
+  .header {
+    overflow: visible;
+  }
+
+  .logo-wrap {
+    overflow: visible;
+    background: #fff;
+  }
+
+  /* Use one clean white angle only. */
+  .logo-wrap::before,
+  .logo-wrap::after {
+    display: none !important;
+    content: none !important;
+  }
+
+  .logo-wrap {
+    clip-path: polygon(0 0, 86% 0, 100% 100%, 0 100%);
+  }
+
+  .logo-wrap img {
+    background: transparent !important;
+  }
+
+  .header-right {
+    background: var(--navy);
+    position: relative;
+    z-index: 1;
+  }
+}
+
+@media (max-width: 900px) {
+  .logo-wrap {
+    clip-path: none !important;
+  }
+}
+
+
+/* ============================================================
+   V21 — VALID TRANSPARENT LOGO SVG
+   ============================================================ */
+@media (min-width: 901px) {
+  .logo-wrap {
+    background: #fff;
+    overflow: visible;
+  }
+
+  .logo-wrap img {
+    background: transparent;
+    display: block;
+  }
+}
+
+
+/* ============================================================
+   V23 — SEPARATE LOGO FROM HEADER GEOMETRY
+   The diagonal is now a background layer; the logo is never clipped.
+   ============================================================ */
+
+@media (min-width: 901px) {
+  .header {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(410px, 34vw) minmax(0, 1fr);
+    height: 96px;
+    background: var(--navy);
+    overflow: visible;
+    isolation: isolate;
+  }
+
+  /* Remove every legacy shape from previous iterations. */
+  .logo-wrap::before,
+  .logo-wrap::after,
+  .header-right::before,
+  .header-right::after {
+    content: none !important;
+    display: none !important;
+  }
+
+  /* ONE white diagonal background, separate from the logo itself. */
+  .header::before {
+    content: "";
+    display: block !important;
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    width: min(620px, 39vw);
+    height: 96px;
+    background: #fff;
+    clip-path: polygon(0 0, 82% 0, 100% 100%, 0 100%);
+    pointer-events: none;
+  }
+
+  .header::after {
+    content: none !important;
+    display: none !important;
+  }
+
+  /* Transparent container — no clipping, no white rectangle. */
+  .logo-wrap {
+    position: relative;
+    z-index: 3;
+    height: 96px;
+    width: 100%;
+    padding: 0 8px 0 12px;
+    margin: 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    overflow: visible !important;
+    background: transparent !important;
+    clip-path: none !important;
+  }
+
+  /* Keep the large logo fully intact. */
+  .logo-wrap img {
+    position: relative;
+    z-index: 4;
+    display: block;
+    width: clamp(410px, 33vw, 535px);
+    max-width: none;
+    max-height: none;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    background: transparent !important;
+    transform: none !important;
+    object-fit: contain;
+    object-position: left top;
+  }
+
+  .header-right {
+    position: relative;
+    z-index: 2;
+    height: 96px;
+    min-width: 0;
+    margin: 0;
+    padding-left: clamp(72px, 6vw, 110px);
+    background: transparent !important;
+    overflow: visible;
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1100px) {
+  .header {
+    grid-template-columns: 325px minmax(0, 1fr);
+  }
+
+  .header::before {
+    width: 385px;
+    clip-path: polygon(0 0, 79% 0, 100% 100%, 0 100%);
+  }
+
+  .logo-wrap {
+    padding-left: 8px;
+  }
+
+  .logo-wrap img {
+    width: 315px;
+  }
+
+  .header-right {
+    padding-left: 48px;
+  }
+}
+
+@media (max-width: 900px) {
+  .header::before,
+  .header::after,
+  .logo-wrap::before,
+  .logo-wrap::after {
+    content: none !important;
+    display: none !important;
+  }
+
+  .logo-wrap {
+    clip-path: none !important;
+    background: transparent !important;
+  }
+}
+
+
+/* ============================================================
+   V26 — CORRECTED SERVICE SHOWCASE
+   Only this section is new. Hero/header + commitments untouched.
+   ============================================================ */
+
+.service-showcase-v26 {
+  width: 100%;
+  background: #fff;
+}
+
+.service-row-v26 {
+  width: 100%;
+  min-height: 315px;
+  display: grid;
+  grid-template-columns: minmax(0, 48%) minmax(0, 52%);
+  border-bottom: 1px solid #dfe4ea;
+  overflow: hidden;
+  background: #fff;
+}
+
+.service-row-v26:last-child {
+  border-bottom: 0;
+}
+
+.service-copy-v26 {
+  position: relative;
+  z-index: 2;
+  min-width: 0;
+  display: grid;
+  grid-template-columns: 74px minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+  padding:
+    42px
+    38px
+    38px
+    max(28px, calc((100vw - var(--max))/2 + 28px));
+  background: #fff;
+}
+
+/* One controlled diagonal into the photo */
+.service-copy-v26::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: -68px;
+  width: 138px;
+  background: #fff;
+  transform: skewX(-15deg);
+  transform-origin: center;
+  z-index: -1;
+}
+
+.service-icon-v26 {
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--navy);
+  border: 1px solid rgba(217,239,47,.35);
+}
+
+.service-icon-v26 svg {
+  width: 34px;
+  height: 34px;
+  fill: none;
+  stroke: var(--lime);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.service-index-v26 {
+  display: block;
+  margin-bottom: 4px;
+  color: #bad000;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .13em;
+}
+
+.service-content-v26 h2 {
+  margin: 0;
+  color: var(--navy);
+  font-family: "Manrope", sans-serif;
+  font-size: clamp(25px, 2vw, 34px);
+  line-height: 1.05;
+  letter-spacing: -.035em;
+  text-transform: uppercase;
+}
+
+.service-location-v26 {
+  margin: 8px 0 19px;
+  color: #a9bd00;
+  font-size: 14px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.service-desc-v26 {
+  max-width: 560px;
+  margin: 0 0 20px;
+  color: #4d5666;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.service-features-v26 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 28px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.service-features-v26 li {
+  position: relative;
+  padding-left: 23px;
+  color: #252d3a;
+  font-size: 12.5px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.service-features-v26 li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 16px;
+  height: 16px;
+  display: grid;
+  place-items: center;
+  border: 1.5px solid #bdd300;
+  border-radius: 50%;
+  color: #9faf00;
+  font-size: 9px;
+}
+
+.service-image-v26 {
+  min-width: 0;
+  width: 100%;
+  height: 315px;
+  overflow: hidden;
+  background: #e9edf1;
+}
+
+.service-image-v26 img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+/* Ensure each image subject remains sensible */
+.service-row-v26:nth-child(1) .service-image-v26 img {
+  object-position: 52% center;
+}
+
+.service-row-v26:nth-child(2) .service-image-v26 img {
+  object-position: 53% center;
+}
+
+.service-row-v26:nth-child(3) .service-image-v26 img {
+  object-position: 58% center;
+}
+
+.service-row-v26:nth-child(4) .service-image-v26 img {
+  object-position: 54% center;
+}
+
+/* Laptop */
+@media (max-width: 1180px) and (min-width: 901px) {
+  .service-row-v26 {
+    grid-template-columns: 51% 49%;
+    min-height: 300px;
+  }
+
+  .service-copy-v26 {
+    grid-template-columns: 58px minmax(0,1fr);
+    gap: 16px;
+    padding: 34px 28px 32px 24px;
+  }
+
+  .service-icon-v26 {
+    width: 52px;
+    height: 52px;
+  }
+
+  .service-icon-v26 svg {
+    width: 29px;
+    height: 29px;
+  }
+
+  .service-image-v26 {
+    height: 300px;
+  }
+
+  .service-features-v26 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .service-row-v26 {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  .service-copy-v26 {
+    order: 1;
+    grid-template-columns: 58px minmax(0,1fr);
+    gap: 17px;
+    padding: 34px 20px 30px;
+  }
+
+  .service-copy-v26::after {
+    display: none;
+  }
+
+  .service-image-v26 {
+    order: 2;
+    height: auto;
+    aspect-ratio: 16 / 8.5;
+  }
+
+  .service-image-v26 img {
+    height: 100%;
+  }
+}
+
+/* Mobile */
+@media (max-width: 560px) {
+  .service-copy-v26 {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 30px 16px 28px;
+  }
+
+  .service-icon-v26 {
+    width: 52px;
+    height: 52px;
+  }
+
+  .service-content-v26 h2 {
+    font-size: 24px;
+  }
+
+  .service-location-v26 {
+    font-size: 12.5px;
+  }
+
+  .service-desc-v26 {
+    font-size: 14px;
+  }
+
+  .service-features-v26 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 9px;
+  }
+
+  .service-image-v26 {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+/* Deleted sections remain deleted */
+#fleet,
+.fleet-section,
+#about,
+.about-section {
+  display: none !important;
+}
+
+
+/* ============================================================
+   V27 — SERVICE IMAGE BALANCE
+   Less zoom, better truck centering, more breathing room
+   ============================================================ */
+
+@media (min-width: 901px) {
+  .service-row-v26 {
+    grid-template-columns: minmax(0, 50%) minmax(0, 50%);
+    min-height: 310px;
+  }
+
+  .service-image-v26 {
+    height: 310px;
+    background: #eef2f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .service-image-v26 img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain !important;
+    object-position: center center !important;
+    transform: scale(.92);
+    transform-origin: center center;
+  }
+
+  /* Give each image a slightly different focal adjustment */
+  .service-row-v26:nth-child(1) .service-image-v26 img {
+    object-position: 52% center !important;
+    transform: scale(.90);
+  }
+
+  .service-row-v26:nth-child(2) .service-image-v26 img {
+    object-position: 50% center !important;
+    transform: scale(.91);
+  }
+
+  .service-row-v26:nth-child(3) .service-image-v26 img {
+    object-position: 54% center !important;
+    transform: scale(.90);
+  }
+
+  .service-row-v26:nth-child(4) .service-image-v26 img {
+    object-position: 50% center !important;
+    transform: scale(.95);
+  }
+
+  /* Slightly reduce diagonal intrusion so imagery has more room */
+  .service-copy-v26::after {
+    right: -56px;
+    width: 112px;
+    transform: skewX(-14deg);
+  }
+}
+
+/* Tablet keeps the image contained instead of aggressively cropped */
+@media (max-width: 900px) and (min-width: 561px) {
+  .service-image-v26 {
+    background: #eef2f5;
+    aspect-ratio: 16 / 9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .service-image-v26 img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain !important;
+    object-position: center !important;
+    transform: scale(.95);
+  }
+}
+
+/* Mobile: use a modest crop so the image still feels full-width,
+   but keep more of the vehicle visible */
+@media (max-width: 560px) {
+  .service-image-v26 {
+    aspect-ratio: 4 / 3;
+    background: #eef2f5;
+  }
+
+  .service-image-v26 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover !important;
+    transform: scale(.94);
+  }
+
+  .service-row-v26:nth-child(1) .service-image-v26 img {
+    object-position: 55% center !important;
+  }
+
+  .service-row-v26:nth-child(2) .service-image-v26 img {
+    object-position: 52% center !important;
+  }
+
+  .service-row-v26:nth-child(3) .service-image-v26 img {
+    object-position: 56% center !important;
+  }
+
+  .service-row-v26:nth-child(4) .service-image-v26 img {
+    object-position: 50% center !important;
+  }
+}
+
+
+/* ============================================================
+   V29 — CLEAN LEFT-FADE SERVICE IMAGES
+   Uses original clean service photos — no baked-in mockup text.
+   ============================================================ */
+
+@media (min-width: 901px) {
+  .service-row-v26 {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 47%) minmax(0, 53%);
+    min-height: 305px;
+    overflow: hidden;
+    background: #fff;
+  }
+
+  .service-copy-v26 {
+    position: relative;
+    z-index: 5;
+    background: #fff;
+    padding-top: 40px;
+    padding-bottom: 34px;
+  }
+
+  /* Remove the old diagonal wedge entirely. */
+  .service-copy-v26::after {
+    display: none !important;
+    content: none !important;
+  }
+
+  .service-image-v26 {
+    position: relative;
+    z-index: 1;
+    height: 305px;
+    width: 112%;
+    margin-left: -12%;
+    overflow: hidden;
+    background: #fff;
+  }
+
+  .service-image-v26 img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover !important;
+    transform: none !important;
+  }
+
+  /* Fade only the LEFT edge of the image.
+     The right side stays fully crisp. */
+  .service-image-v26::before {
+    content: "";
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 31%;
+    pointer-events: none;
+    background: linear-gradient(
+      90deg,
+      rgba(255,255,255,1) 0%,
+      rgba(255,255,255,.96) 18%,
+      rgba(255,255,255,.78) 40%,
+      rgba(255,255,255,.42) 65%,
+      rgba(255,255,255,.12) 86%,
+      rgba(255,255,255,0) 100%
+    );
+  }
+
+  /* No overlay/fade on the right. */
+  .service-image-v26::after {
+    display: none !important;
+    content: none !important;
+  }
+
+  /* Push the vehicles toward the right side while preserving
+     enough context around each service image. */
+  .service-row-v26:nth-child(1) .service-image-v26 img {
+    object-position: 70% center !important;
+  }
+
+  .service-row-v26:nth-child(2) .service-image-v26 img {
+    object-position: 72% center !important;
+  }
+
+  .service-row-v26:nth-child(3) .service-image-v26 img {
+    object-position: 72% center !important;
+  }
+
+  .service-row-v26:nth-child(4) .service-image-v26 img {
+    object-position: 68% center !important;
+  }
+
+  .service-content-v26 {
+    max-width: 620px;
+  }
+
+  .service-desc-v26 {
+    max-width: 540px;
+  }
+}
+
+/* Laptop */
+@media (min-width: 901px) and (max-width: 1180px) {
+  .service-row-v26 {
+    grid-template-columns: 50% 50%;
+    min-height: 290px;
+  }
+
+  .service-image-v26 {
+    height: 290px;
+    width: 108%;
+    margin-left: -8%;
+  }
+
+  .service-image-v26::before {
+    width: 27%;
+  }
+
+  .service-row-v26:nth-child(1) .service-image-v26 img,
+  .service-row-v26:nth-child(2) .service-image-v26 img,
+  .service-row-v26:nth-child(3) .service-image-v26 img,
+  .service-row-v26:nth-child(4) .service-image-v26 img {
+    object-position: 68% center !important;
+  }
+}
+
+/* Tablet: stacked image, subtle left fade. */
+@media (max-width: 900px) and (min-width: 561px) {
+  .service-image-v26 {
+    position: relative;
+    width: 100%;
+    margin-left: 0;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: #fff;
+  }
+
+  .service-image-v26 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover !important;
+    object-position: 64% center !important;
+    transform: none !important;
+  }
+
+  .service-image-v26::before {
+    content: "";
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 18%;
+    pointer-events: none;
+    background: linear-gradient(
+      90deg,
+      rgba(255,255,255,.95) 0%,
+      rgba(255,255,255,.55) 50%,
+      rgba(255,255,255,0) 100%
+    );
+  }
+
+  .service-image-v26::after {
+    display: none !important;
+    content: none !important;
+  }
+}
+
+/* Mobile: no fade — keep the photo clean and readable. */
+@media (max-width: 560px) {
+  .service-image-v26 {
+    width: 100%;
+    margin-left: 0;
+    aspect-ratio: 4 / 3;
+  }
+
+  .service-image-v26::before,
+  .service-image-v26::after {
+    display: none !important;
+    content: none !important;
+  }
+
+  .service-image-v26 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover !important;
+    object-position: 64% center !important;
+    transform: none !important;
+  }
+}
+
+/* v30 — service photography framing: full vehicles + softer one-sided fade */
+@media (min-width: 901px) {
+  .service-row-v26 {
+    grid-template-columns: minmax(0, 47%) minmax(0, 53%);
+    min-height: 315px;
+  }
+  .service-image-v26 {
+    height: 315px;
+    width: 108%;
+    margin-left: -8%;
+    background: #fff;
+  }
+  .service-image-v26 img {
+    object-fit: cover !important;
+    /* Slightly zoomed OUT versus v29 by widening the image region. */
+    transform: scale(.96) !important;
+    transform-origin: 70% center !important;
+  }
+  .service-image-v26::before {
+    width: 38%;
+    background: linear-gradient(90deg,
+      #fff 0%,
+      rgba(255,255,255,.995) 16%,
+      rgba(255,255,255,.97) 30%,
+      rgba(255,255,255,.84) 46%,
+      rgba(255,255,255,.58) 62%,
+      rgba(255,255,255,.28) 78%,
+      rgba(255,255,255,.08) 91%,
+      rgba(255,255,255,0) 100%);
+  }
+  .service-row-v26:nth-child(1) .service-image-v26 img { object-position: 66% center !important; }
+  .service-row-v26:nth-child(2) .service-image-v26 img { object-position: 66% center !important; }
+  .service-row-v26:nth-child(3) .service-image-v26 img { object-position: 67% center !important; }
+  .service-row-v26:nth-child(4) .service-image-v26 img { object-position: 64% center !important; }
+}
+@media (min-width: 901px) and (max-width: 1180px) {
+  .service-image-v26 { width: 106%; margin-left: -6%; }
+  .service-image-v26::before { width: 34%; }
+  .service-image-v26 img { transform: scale(.97) !important; }
+}
+
+/* ============================================================
+   V31 — FULL VEHICLE / RIGHT-ANCHORED SERVICE PHOTOS
+   Match approved mockup: full trucks, centered-right, soft left fade.
+   ============================================================ */
+
+@media (min-width: 901px) {
+  .service-row-v26 {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 46%) minmax(0, 54%);
+    min-height: 315px;
+    overflow: hidden;
+    background: #fff;
+  }
+
+  .service-copy-v26 {
+    position: relative;
+    z-index: 6;
+    background: #fff;
+    padding-top: 42px;
+    padding-bottom: 36px;
+  }
+
+  .service-copy-v26::after {
+    content: none !important;
+    display: none !important;
+  }
+
+  .service-image-v26 {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 315px;
+    margin: 0 !important;
+    overflow: hidden;
+    background: #fff;
+  }
+
+  /* Keep the complete source photo visible instead of using cover.
+     Anchoring right leaves the vehicle naturally on the right side. */
+  .service-image-v26 img {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    right: 0;
+    left: auto;
+    width: auto !important;
+    max-width: none !important;
+    height: 108% !important;
+    object-fit: contain !important;
+    object-position: center center !important;
+    transform: translateY(-50%) !important;
+    transform-origin: right center;
+  }
+
+  /* Wide white-to-transparent veil over only the LEFT side.
+     The vehicle and right edge stay crisp. */
+  .service-image-v26::before {
+    content: "";
+    display: block !important;
+    position: absolute;
+    z-index: 4;
+    inset: 0 auto 0 0;
+    width: 58%;
+    pointer-events: none;
+    background: linear-gradient(
+      90deg,
+      #fff 0%,
+      rgba(255,255,255,.995) 18%,
+      rgba(255,255,255,.96) 34%,
+      rgba(255,255,255,.80) 52%,
+      rgba(255,255,255,.48) 70%,
+      rgba(255,255,255,.16) 87%,
+      rgba(255,255,255,0) 100%
+    );
+  }
+
+  .service-image-v26::after {
+    content: none !important;
+    display: none !important;
+  }
+
+  /* Individual subject framing. These stay full-frame, but move the
+     photography a little farther right like the approved mockup. */
+  .service-row-v26:nth-child(1) .service-image-v26 img {
+    right: 1.5%;
+    height: 104% !important;
+  }
+
+  .service-row-v26:nth-child(2) .service-image-v26 img {
+    right: 1.5%;
+    height: 104% !important;
+  }
+
+  .service-row-v26:nth-child(3) .service-image-v26 img {
+    right: 1.5%;
+    height: 104% !important;
+  }
+
+  .service-row-v26:nth-child(4) .service-image-v26 img {
+    right: 1.5%;
+    height: 106% !important;
+  }
+}
+
+/* Medium desktop / browser zoom: retain full vehicles and allow
+   a little more photo width without clipping the cab. */
+@media (min-width: 901px) and (max-width: 1180px) {
+  .service-row-v26 {
+    grid-template-columns: 49% 51%;
+    min-height: 300px;
+  }
+
+  .service-image-v26 {
+    height: 300px;
+  }
+
+  .service-image-v26 img,
+  .service-row-v26:nth-child(1) .service-image-v26 img,
+  .service-row-v26:nth-child(2) .service-image-v26 img,
+  .service-row-v26:nth-child(3) .service-image-v26 img,
+  .service-row-v26:nth-child(4) .service-image-v26 img {
+    right: 0;
+    height: 100% !important;
+  }
+
+  .service-image-v26::before {
+    width: 52%;
+  }
+}
+
+/* Tablet: photo becomes a full-width panel below the copy. */
+@media (max-width: 900px) and (min-width: 561px) {
+  .service-image-v26 {
+    position: relative;
+    width: 100%;
+    margin: 0 !important;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    background: #fff;
+    overflow: hidden;
+  }
+
+  .service-image-v26 img,
+  .service-row-v26:nth-child(1) .service-image-v26 img,
+  .service-row-v26:nth-child(2) .service-image-v26 img,
+  .service-row-v26:nth-child(3) .service-image-v26 img,
+  .service-row-v26:nth-child(4) .service-image-v26 img {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: auto !important;
+    max-width: none !important;
+    height: 100% !important;
+    object-fit: contain !important;
+    transform: translateY(-50%) !important;
+  }
+
+  .service-image-v26::before {
+    content: "";
+    display: block !important;
+    position: absolute;
+    z-index: 4;
+    inset: 0 auto 0 0;
+    width: 28%;
+    background: linear-gradient(90deg,#fff 0%,rgba(255,255,255,.72) 48%,rgba(255,255,255,0) 100%);
+    pointer-events: none;
+  }
+}
+
+/* Mobile: prioritize a clear, complete vehicle photo. */
+@media (max-width: 560px) {
+  .service-image-v26 {
+    position: relative;
+    width: 100%;
+    margin: 0 !important;
+    aspect-ratio: 4 / 3;
+    background: #fff;
+    overflow: hidden;
+  }
+
+  .service-image-v26::before,
+  .service-image-v26::after {
+    content: none !important;
+    display: none !important;
+  }
+
+  .service-image-v26 img,
+  .service-row-v26:nth-child(1) .service-image-v26 img,
+  .service-row-v26:nth-child(2) .service-image-v26 img,
+  .service-row-v26:nth-child(3) .service-image-v26 img,
+  .service-row-v26:nth-child(4) .service-image-v26 img {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 100% !important;
+    max-width: none !important;
+    height: 100% !important;
+    object-fit: contain !important;
+    object-position: center center !important;
+    transform: translateY(-50%) !important;
+  }
+}
