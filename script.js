@@ -287,26 +287,18 @@ if (form) {
       });
 
       if (!response.ok) {
-        const errorData = await response.json();
-
-        console.error("Formspree error:", errorData);
-
-        throw new Error(
-          errorData.error || "Form submission failed"
-        );
+        throw new Error("Form submission failed");
       }
 
       form.reset();
 
-      alert("Thank you! Your quote request has been sent.");
+      const successMessage = document.getElementById("quote-success-message");
 
-      const modal = document.getElementById("email-quote-modal");
-
-      if (modal) {
-        modal.classList.remove("is-open");
-        modal.setAttribute("aria-hidden", "true");
-        document.body.classList.remove("email-quote-open");
+      if (successMessage) {
+        successMessage.hidden = false;
       }
+
+      submitButton.style.display = "none";
 
     } catch (error) {
       console.error(error);
@@ -314,10 +306,11 @@ if (form) {
       alert(
         "We couldn't send your request. Please try again."
       );
-
-    } finally {
-      submitButton.disabled = false;
-      submitButton.innerHTML = originalHTML;
+    }  finally {
+      if (!submissionSucceeded) {
+        submitButton.disabled = false;
+        submitButton.innerHTML = originalHTML;
+      }
     }
   });
 }
