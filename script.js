@@ -348,55 +348,57 @@ document.addEventListener("keydown", (event) => {
 // })();
 
 const form = document.getElementById("email-quote-modal-form");
-const submitButton = form.querySelector('button[type="submit"]');
 
-form.addEventListener("submit", async (event) => {
-  event.preventDefault();
+if (form) {
+  const submitButton = form.querySelector('button[type="submit"]');
 
-  if (!form.reportValidity()) {
-    return;
-  }
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
 
-  const originalText = submitButton.textContent;
-
-  submitButton.disabled = true;
-  submitButton.textContent = "SENDING...";
-
-  try {
-    const response = await fetch(form.action, {
-      method: "POST",
-      body: new FormData(form),
-      headers: {
-        Accept: "application/json",
-      },
-    });
-
-    if (!response.ok) {
-      throw new Error("Form submission failed");
+    if (!form.reportValidity()) {
+      return;
     }
 
-    form.reset();
+    const originalHTML = submitButton.innerHTML;
 
-    alert("Thank you! Your quote request has been sent.");
+    submitButton.disabled = true;
+    submitButton.textContent = "SENDING...";
 
-    // Close your quote modal if you're using one
-    const modal = document.getElementById("email-quote-modal");
+    try {
+      const response = await fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: {
+          Accept: "application/json",
+        },
+      });
 
-    if (modal) {
-      modal.classList.remove("is-open");
-      modal.setAttribute("aria-hidden", "true");
-      document.body.classList.remove("email-quote-open");
+      if (!response.ok) {
+        throw new Error("Form submission failed");
+      }
+
+      form.reset();
+
+      alert("Thank you! Your quote request has been sent.");
+
+      const modal = document.getElementById("email-quote-modal");
+
+      if (modal) {
+        modal.classList.remove("is-open");
+        modal.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("email-quote-open");
+      }
+
+    } catch (error) {
+      console.error(error);
+
+      alert(
+        "We couldn't send your request. Please try again."
+      );
+
+    } finally {
+      submitButton.disabled = false;
+      submitButton.innerHTML = originalHTML;
     }
-
-  } catch (error) {
-    console.error(error);
-
-    alert(
-      "We couldn't send your request. Please try again or contact R&CH directly."
-    );
-  } finally {
-    submitButton.disabled = false;
-    submitButton.textContent = originalText;
-  }
-});
-
+  });
+}
