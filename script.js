@@ -48,10 +48,10 @@ const translations = {
     "buttons.whatsapp": "Message on WhatsApp",
 
     "hero.kicker": "Laredo, Texas • Nationwide Freight",
-    "hero.line1": "Delivering Solutions.",
-    "hero.line2": "Driving",
-    "hero.line3": "Trust.",
-    "hero.description": "Years of experience moving national and international freight, with specialized solutions when timing is critical.",
+    "hero.eyebrow": "Delivering Solutions. Driving Trust.",
+    "hero.title.line1": "Cross-Border Freight Transportation",
+    "hero.title.line2": "Between Mexico & the USA",
+    "hero.description": "Reliable, time-sensitive freight transportation throughout Mexico and the United States, with service in Laredo, Monterrey and San Antonio.",
 
     "benefits.reliable.title": "Reliable",
     "benefits.reliable.text": "You can count on us to get it there.",
@@ -149,10 +149,10 @@ const translations = {
     "buttons.whatsapp": "Enviar WhatsApp",
 
     "hero.kicker": "Laredo, Texas • Transporte Nacional",
-    "hero.line1": "Servicios de Transporte.",
-    "hero.line2": "Expertos en",
-    "hero.line3": "Carga Urgente.",
-    "hero.description": "Soluciones de transporte nacional e internacional con experiencia, comunicación directa y opciones para embarques donde cada minuto cuenta.",
+    "hero.eyebrow": "Entregando soluciones. Generando confianza.",
+    "hero.title.line1": "Transporte de Carga Transfronterizo",
+    "hero.title.line2": "entre México y Estados Unidos",
+    "hero.description": "Transporte de carga confiable y sensible al tiempo en México y Estados Unidos, con servicio en Laredo, Monterrey y San Antonio.",
 
     "benefits.reliable.title": "Confiable",
     "benefits.reliable.text": "Puede contar con nosotros para llevar su carga a destino.",
