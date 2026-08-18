@@ -1,22 +1,25 @@
 const translations = {
   en: {
 
-    "svc.international.description": "Reliable cross-border transportation between Mexico and the United States for time-sensitive and specialized freight.",
-    "svc.national.description": "Flexible transportation solutions throughout Mexico or the United States, with options for large and light freight.",
-    "svc.local.description": "Local and regional transportation in our core service areas for freight that needs responsive, direct delivery.",
-    "svc.additional.description": "Additional logistics support to help freight move efficiently across borders and between transportation units.",
+    "svc.international.description": "Cross-border freight transportation between Mexico and the United States for urgent, time-sensitive and specialized shipments.",
+    "svc.national.description": "Freight transportation throughout Mexico or the United States, with flexible options for full-size and expedited light freight.",
+    "svc.local.description": "Local and regional freight transportation in Monterrey, Laredo and San Antonio for shipments that require responsive, direct delivery.",
+    "svc.additional.description": "Cross-border logistics support for international freight, including border crossings and transloading between transportation units.",
 
     "detail.kicker": "Complete Transportation Services",
     "detail.title": "From urgent freight to cross-border logistics.",
     "detail.intro": "Flexible transportation options for international, national and local freight — with solutions tailored to time, load type and urgency.",
-    "detail.international.title": "International Transport",
+    "detail.international.title": "Cross-Border Freight Transportation",
     "detail.international.subtitle": "Mexico ↔ USA",
-    "detail.national.title": "National Service",
+    "detail.national.title": "National Freight Transportation",
     "detail.national.subtitle": "Mexico or USA",
-    "detail.local.title": "Local Service",
+    "detail.local.title": "Local & Regional Freight Transportation",
     "detail.local.subtitle": "Monterrey • Laredo • San Antonio",
-    "detail.other.title": "Additional Services",
-    "detail.other.subtitle": "Cross-border support",
+    "detail.other.title": "Cross-Border & Transloading Services",
+    "detail.other.subtitle": "International logistics support",
+
+
+
     "detail.items.trailer53": "53-foot trailers",
     "detail.items.flatbeds": "Flatbeds / platforms",
     "detail.items.light": "Light transport: Hot Shot, 3.5-ton trucks and Sprinter Van",
@@ -57,8 +60,8 @@ const translations = {
     "benefits.reliable.text": "You can count on us to get it there.",
     "benefits.ontime.title": "On Time",
     "benefits.ontime.text": "Moving your business forward.",
-    "benefits.anywhere.title": "Anywhere",
-    "benefits.anywhere.text": "From Laredo to any city in the USA.",
+    "benefits.anywhere.title": "Mexico ↔ USA",
+    "benefits.anywhere.text": "Cross-border freight solutions built around your route.",
     "benefits.team.title": "Team Driver",
     "benefits.team.text": "Team driver available when required.",
 
@@ -101,22 +104,22 @@ const translations = {
 
   es: {
 
-    "svc.international.description": "Transporte confiable entre México y Estados Unidos para embarques urgentes, especializados y sensibles al tiempo.",
-    "svc.national.description": "Soluciones flexibles de transporte dentro de México o Estados Unidos, con opciones para carga pesada y transporte ligero.",
-    "svc.local.description": "Servicio local y regional en nuestras principales zonas de operación para cargas que requieren atención directa y rápida.",
-    "svc.additional.description": "Servicios logísticos adicionales para facilitar el movimiento de mercancías entre fronteras y unidades de transporte.",
+    "svc.international.description": "Transporte de carga entre México y Estados Unidos para embarques urgentes, especializados y sensibles al tiempo.",
+    "svc.national.description": "Transporte de carga dentro de México o Estados Unidos, con opciones flexibles para carga pesada y transporte ligero urgente.",
+    "svc.local.description": "Transporte local y regional de carga en Monterrey, Laredo y San Antonio para embarques que requieren atención directa y entrega rápida.",
+    "svc.additional.description": "Soporte logístico para carga internacional, incluyendo cruces fronterizos y maniobras de transbordo entre unidades de transporte.",
 
     "detail.kicker": "Servicios Integrales de Transporte",
     "detail.title": "De cargas urgentes a logística transfronteriza.",
     "detail.intro": "Opciones flexibles para transporte internacional, nacional y local, con soluciones adaptadas al tiempo, tipo de carga y nivel de urgencia.",
-    "detail.international.title": "Transporte Internacional",
+    "detail.international.title": "Transporte de Carga Transfronterizo",
     "detail.international.subtitle": "México ↔ USA",
-    "detail.national.title": "Servicio Nacional",
+    "detail.national.title": "Transporte Nacional de Carga",
     "detail.national.subtitle": "México o USA",
-    "detail.local.title": "Servicio Local",
+    "detail.local.title": "Transporte Local y Regional de Carga",
     "detail.local.subtitle": "Monterrey • Laredo • San Antonio",
-    "detail.other.title": "Otros Servicios",
-    "detail.other.subtitle": "Soporte transfronterizo",
+    "detail.other.title": "Cruces Internacionales y Transbordo",
+    "detail.other.subtitle": "Soporte logístico internacional",
     "detail.items.trailer53": "Cajas de 53 pies",
     "detail.items.flatbeds": "Plataformas",
     "detail.items.light": "Transporte ligero: Hot Shot, camioncitos 3.5 y Sprinter Van",
@@ -158,8 +161,8 @@ const translations = {
     "benefits.reliable.text": "Puede contar con nosotros para llevar su carga a destino.",
     "benefits.ontime.title": "A Tiempo",
     "benefits.ontime.text": "Manteniendo su negocio en movimiento.",
-    "benefits.anywhere.title": "A Donde Sea",
-    "benefits.anywhere.text": "De Laredo a cualquier ciudad de Estados Unidos.",
+    "benefits.anywhere.title": "Mexico ↔ USA",
+    "benefits.anywhere.text": "Soluciones de transporte transfronterizo adaptadas a su ruta.",
     "benefits.team.title": "Team Driver",
     "benefits.team.text": "Servicio con dos choferes disponible cuando se requiera.",
 
