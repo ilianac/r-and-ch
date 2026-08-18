@@ -2798,6 +2798,57 @@ body {
   margin-top: 18px;
 }
 
+.service-learn-more {
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+
+  margin-top: 28px;
+  padding-bottom: 7px;
+
+  color: var(--navy);
+  font-family: "Manrope", sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  text-decoration: none;
+
+  transition:
+    color .2s ease,
+    gap .2s ease;
+}
+
+/* Lime underline */
+.service-learn-more::after {
+  content: "";
+
+  position: absolute;
+  left: 0;
+  bottom: 0;
+
+  width: 100%;
+  height: 2px;
+
+  background: var(--lime);
+
+  transform-origin: left;
+  transition: transform .2s ease;
+}
+
+/* Hover */
+.service-learn-more:hover {
+  color: var(--navy);
+  gap: 17px;
+}
+
+.service-learn-more:hover::after {
+  transform: scaleX(.82);
+}
+
 @media (max-width: 1180px) {
   .service-category-grid {
     grid-template-columns: repeat(2, minmax(0,1fr));
