@@ -48,7 +48,7 @@ const translations = {
 
     "buttons.quote": "Get a Quote",
     "buttons.services": "Our Services",
-    "buttons.whatsapp": "Message on WhatsApp",
+    "buttons.learnMore": "Learn More",
 
     "hero.kicker": "Laredo, Texas • Nationwide Freight",
     "hero.eyebrow": "Delivering Solutions. Driving Trust.",
@@ -149,7 +149,7 @@ const translations = {
 
     "buttons.quote": "Solicitar Cotización",
     "buttons.services": "Nuestros Servicios",
-    "buttons.whatsapp": "Enviar WhatsApp",
+    "buttons.learnMore": "Más Información",
 
     "hero.kicker": "Laredo, Texas • Transporte Nacional",
     "hero.eyebrow": "Entregando soluciones. Generando confianza.",
@@ -226,6 +226,15 @@ function applyLanguage(lang) {
       element.placeholder = translations[lang][key];
     }
   });
+
+  const crossBorderLearnMore = document.getElementById("cross-border-learn-more");
+
+  if (crossBorderLearnMore) {
+    crossBorderLearnMore.href =
+      lang === "es"
+        ? "/es/transporte-carga-mexico-estados-unidos/"
+        : "/en/cross-border-freight-mexico-usa/";
+  }
 
   document.querySelectorAll(".lang-button").forEach((button) => {
     button.classList.toggle("active", button.dataset.lang === lang);
