@@ -160,7 +160,7 @@ const translations = {
     "benefits.ontime.text": "Manteniendo su negocio en movimiento.",
     "benefits.anywhere.title": "A Donde Sea",
     "benefits.anywhere.text": "De Laredo a cualquier ciudad de Estados Unidos.",
-    "benefits.team.title": "Equipo de Choferes",
+    "benefits.team.title": "Team Driver",
     "benefits.team.text": "Servicio con dos choferes disponible cuando se requiera.",
 
     "fleet.title": "Nuestra Flota",
@@ -182,7 +182,7 @@ const translations = {
     "about.text2": "Desde cargas urgentes y hot shot hasta transporte programado, nuestro enfoque es una comunicación clara, el manejo cuidadoso y una entrega confiable.",
 
     "contact.kicker": "¿Listo para mover su carga?",
-    "contact.title": "Contactanos.",
+    "contact.title": "Contáctanos.",
     "contact.text": "Cuéntenos sobre su embarque y le ayudaremos a encontrar la solución de transporte adecuada.",
     "contact.nameLabel": "Contacto",
     "contact.emailLabel": "Correo",
