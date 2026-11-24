@@ -278,29 +278,6 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
-// V15 responsive navigation hardening
-function closeResponsiveMenu() {
-  const panel = document.querySelector(".header-right");
-  const button = document.querySelector(".mobile-menu-button");
-  if (!panel || !button) return;
-
-  panel.classList.remove("open");
-  button.setAttribute("aria-expanded", "false");
-  document.body.classList.remove("mobile-nav-open");
-}
-
-window.addEventListener("resize", () => {
-  if (window.innerWidth > 900) {
-    closeResponsiveMenu();
-  }
-});
-
-document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") {
-    closeResponsiveMenu();
-  }
-});
-
 const quoteForms = [
   document.getElementById("quote-info-form"),
   document.getElementById("email-quote-modal-form")
