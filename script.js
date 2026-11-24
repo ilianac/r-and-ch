@@ -205,12 +205,22 @@ const translations = {
   }
 };
 
-let currentLanguage = localStorage.getItem("rch-language") || "en";
+const requestedLanguage = new URLSearchParams(window.location.search).get("lang");
+const savedLanguage = localStorage.getItem("rch-language");
+
+let currentLanguage = [requestedLanguage, savedLanguage]
+  .find((lang) => lang === "en" || lang === "es") || "en";
 
 function applyLanguage(lang) {
   currentLanguage = lang;
   localStorage.setItem("rch-language", lang);
   document.documentElement.lang = lang;
+
+  const url = new URL(window.location.href);
+  if (url.searchParams.has("lang") && url.searchParams.get("lang") !== lang) {
+    url.searchParams.set("lang", lang);
+    window.history.replaceState(null, "", url);
+  }
 
   document.querySelectorAll("[data-i18n]").forEach((element) => {
     const key = element.dataset.i18n;
