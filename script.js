@@ -249,31 +249,56 @@ applyLanguage(currentLanguage);
 
 const emailModal = document.getElementById("email-quote-modal");
 
-function openQuoteModal() {
-  if (!emailModal) return;
+let quoteOpener = null;
+const pageSections = document.querySelectorAll("body > header, body > main, body > footer");
 
-  // After a successful quote, reopen the popup for a new request.
+function openQuoteModal(opener) {
+  if (!emailModal) return;
+  quoteOpener = opener;
+
+  // Clear the confirmation from the previous successful quote.
   const successMessage = emailModal.querySelector("#quote-success-message");
   if (successMessage && !successMessage.hidden) {
     successMessage.hidden = true;
-    const submitButton = emailModal.querySelector('button[type="submit"]');
-    submitButton?.style.removeProperty("display");
+    emailModal.querySelector('button[type="submit"]')?.style.removeProperty("display");
   }
 
   emailModal.classList.add("is-open");
   emailModal.setAttribute("aria-hidden", "false");
+  document.body.classList.add("email-quote-open");
+
+  emailModal.querySelector('input[name="name"]')?.focus();
+  pageSections.forEach((section) => {
+    section.inert = true;
+  });
 }
 
 function closeQuoteModal() {
-  if (!emailModal) return;
+  if (!emailModal?.classList.contains("is-open")) return;
+
+  pageSections.forEach((section) => {
+    section.inert = false;
+  });
+
   emailModal.classList.remove("is-open");
+  document.body.classList.remove("email-quote-open");
+
+  // On mobile, the link that opened the popup may be inside a closed menu.
+  if (quoteOpener?.getClientRects().length) {
+    quoteOpener.focus();
+  } else {
+    document.querySelector(".mobile-menu-button")?.focus();
+  }
+
   emailModal.setAttribute("aria-hidden", "true");
+  quoteOpener = null;
 }
 
-document.querySelectorAll(".js-open-email-quote").forEach((button) => {
-  button.addEventListener("click", (event) => {
+document.querySelectorAll(".js-open-email-quote").forEach((link) => {
+  link.addEventListener("click", (event) => {
+    if (!emailModal) return;
     event.preventDefault();
-    openQuoteModal();
+    openQuoteModal(link);
   });
 });
 
@@ -282,8 +307,28 @@ document.querySelectorAll("[data-close-email-quote]").forEach((button) => {
 });
 
 document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape" && emailModal?.classList.contains("is-open")) {
+  if (!emailModal?.classList.contains("is-open")) return;
+
+  if (event.key === "Escape") {
+    event.preventDefault();
     closeQuoteModal();
+    return;
+  }
+
+  if (event.key !== "Tab") return;
+
+  const controls = [...emailModal.querySelectorAll("button, input, textarea, select, a[href]")]
+    .filter((el) => !el.disabled && el.tabIndex >= 0 && el.getClientRects().length > 0);
+
+  const first = controls[0];
+  const last = controls[controls.length - 1];
+
+  if (event.shiftKey && document.activeElement === first) {
+    event.preventDefault();
+    last?.focus();
+  } else if (!event.shiftKey && document.activeElement === last) {
+    event.preventDefault();
+    first?.focus();
   }
 });
 
