@@ -251,6 +251,15 @@ const emailModal = document.getElementById("email-quote-modal");
 
 function openQuoteModal() {
   if (!emailModal) return;
+
+  // After a successful quote, reopen the popup for a new request.
+  const successMessage = emailModal.querySelector("#quote-success-message");
+  if (successMessage && !successMessage.hidden) {
+    successMessage.hidden = true;
+    const submitButton = emailModal.querySelector('button[type="submit"]');
+    submitButton?.style.removeProperty("display");
+  }
+
   emailModal.classList.add("is-open");
   emailModal.setAttribute("aria-hidden", "false");
 }
@@ -273,28 +282,30 @@ document.querySelectorAll("[data-close-email-quote]").forEach((button) => {
 });
 
 document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape" && emailModal && emailModal.classList.contains("is-open")) {
+  if (event.key === "Escape" && emailModal?.classList.contains("is-open")) {
     closeQuoteModal();
   }
 });
 
 const quoteForms = [
   document.getElementById("quote-info-form"),
-  document.getElementById("email-quote-modal-form")
+  document.getElementById("email-quote-modal-form"),
 ].filter(Boolean);
 
 quoteForms.forEach((form) => {
   const submitButton = form.querySelector('button[type="submit"]');
+  const successMessage = form.querySelector("#quote-success-message");
 
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
 
-    if (!form.reportValidity()) {
+    if (submitButton?.disabled || (successMessage && !successMessage.hidden)) {
       return;
     }
 
-    const originalHTML = submitButton ? submitButton.innerHTML : "";
-    let submissionSucceeded = false;
+    if (!form.reportValidity()) return;
+
+    const originalHTML = submitButton?.innerHTML;
 
     if (submitButton) {
       submitButton.disabled = true;
@@ -305,38 +316,24 @@ quoteForms.forEach((form) => {
       const response = await fetch(form.action, {
         method: "POST",
         body: new FormData(form),
-        headers: {
-          Accept: "application/json",
-        },
+        headers: { Accept: "application/json" },
       });
 
-      if (!response.ok) {
-        throw new Error("Form submission failed");
-      }
+      if (!response.ok) throw new Error("Form submission failed");
 
-      submissionSucceeded = true;
       form.reset();
 
-      if (form.id === "email-quote-modal-form") {
-        const successMessage = document.getElementById("quote-success-message");
-        if (successMessage) {
-          successMessage.hidden = false;
-        }
-      }
-
-      if (submitButton && form.id === "email-quote-modal-form") {
-        submitButton.style.display = "none";
-      }
-
-      if (form.id === "quote-info-form") {
+      if (successMessage) {
+        successMessage.hidden = false;
+        if (submitButton) submitButton.style.display = "none";
+      } else {
         alert("Your quote request has been sent successfully.");
       }
-
     } catch (error) {
       console.error(error);
       alert("We couldn't send your request. Please try again.");
     } finally {
-      if (submitButton && !submissionSucceeded) {
+      if (submitButton) {
         submitButton.disabled = false;
         submitButton.innerHTML = originalHTML;
       }
